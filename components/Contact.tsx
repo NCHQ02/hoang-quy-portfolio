@@ -100,11 +100,11 @@ interface ContactItem {
 const CONTACTS: ContactItem[] = [
   {
     id: "email",
-    name: "Hoang Quy",
+    name: "Email",
     handle: "hoangquy2620@gmail.com",
     role: "Owner",
     avatarColor: "bg-design-blue",
-    initial: "HQ",
+    initial: "Mail",
     action: "copy",
     canEditLabel: "Can edit",
   },
