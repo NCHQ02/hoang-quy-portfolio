@@ -3,48 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Motion</title>
+    <title>Hoang Quy Portfolio | Automation Marketing Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              background: '#0a0a0a',
-              surface: '#171717',
-              primary: '#3b82f6',
-              secondary: '#6366f1',
-              text: '#ededed',
-              muted: '#a1a1aa',
-              accent: '#a3e635', // Lime green for the handwriting effect
-              'design-purple': '#8b5cf6',
-              'design-blue': '#3b82f6',
-              'design-green': '#4ade80',
-              'design-yellow': '#facc15',
-              'design-pink': '#f472b6',
-              'design-orange': '#ff4500', // Added for the About Me section
+              background: "#0a0a0a",
+              surface: "#171717",
+              primary: "#3b82f6",
+              secondary: "#6366f1",
+              text: "#ededed",
+              muted: "#a1a1aa",
+              accent: "#a3e635", // Lime green for the handwriting effect
+              "design-purple": "#8b5cf6",
+              "design-blue": "#3b82f6",
+              "design-green": "#4ade80",
+              "design-yellow": "#facc15",
+              "design-pink": "#f472b6",
+              "design-orange": "#ff4500", // Added for the About Me section
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              script: ['"La Belle Aurore"', 'cursive'],
-              display: ['"Fredoka"', 'sans-serif'],
+              sans: ["Inter", "sans-serif"],
+              script: ['"La Belle Aurore"', "cursive"],
+              display: ['"Fredoka"', "sans-serif"],
             },
           },
         },
-      }
+      };
     </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=La+Belle+Aurore&family=Fredoka:wght@400;500;600;700&display=swap');
-      
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=La+Belle+Aurore&family=Fredoka:wght@400;500;600;700&display=swap");
+
       body {
         background-color: #0a0a0a;
         color: #ededed;
-        font-family: 'Inter', sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      
+
       /* Custom scrollbar for webkit */
       ::-webkit-scrollbar {
         width: 8px;
@@ -64,24 +64,25 @@
          CRITICAL FIX: Force hide system cursor on EVERYTHING when this class is active.
          This prevents the 'hand' pointer from showing up on buttons/links.
       */
-      .no-cursor, .no-cursor * {
+      .no-cursor,
+      .no-cursor * {
         cursor: none !important;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
+    <script type="importmap">
+      {
+        "imports": {
+          "react/": "https://aistudiocdn.com/react@^19.2.1/",
+          "react": "https://aistudiocdn.com/react@^19.2.1",
+          "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.25",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
