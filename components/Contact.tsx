@@ -125,7 +125,7 @@ const CONTACTS: ContactItem[] = [
     handle: "NCHQ02",
     role: "Can audit",
     avatarColor: "bg-[#333]", // GitHub Black
-    initial: "Gh",
+    initial: "Git",
     action: "link",
     url: "https://github.com/NCHQ02",
     canEditLabel: "Editor",
