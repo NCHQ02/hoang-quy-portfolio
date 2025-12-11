@@ -157,7 +157,7 @@ const HolographicCard = () => {
         <div className="relative w-32 h-32 rounded-full border-2 border-white/10 p-1 mb-4 group-hover:scale-105 transition-transform duration-500">
           <div className="absolute inset-0 rounded-full border-2 border-design-blue border-t-transparent animate-spin-slow" />
           <img
-            src="/public/images/resume/avatar_resume.png"
+            src="https://lh3.googleusercontent.com/a/ACg8ocLuApkrl-nsuW0F6FzlwAHMhXhvW-SVuD-VJqq_bsQr-BCeTepNNA=s288-c-no"
             alt="Avatar"
             className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"
           />
