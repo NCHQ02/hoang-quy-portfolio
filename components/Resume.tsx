@@ -139,7 +139,7 @@ const HolographicCard = () => {
               Access Level
             </span>
             <span className="text-xs text-white font-mono font-bold">
-              ADMIN_V2.0
+              Premium
             </span>
           </div>
         </div>
@@ -157,7 +157,7 @@ const HolographicCard = () => {
         <div className="relative w-32 h-32 rounded-full border-2 border-white/10 p-1 mb-4 group-hover:scale-105 transition-transform duration-500">
           <div className="absolute inset-0 rounded-full border-2 border-design-blue border-t-transparent animate-spin-slow" />
           <img
-            src="https://images.unsplash.com/photo-1629747490241-624f07d7081c?q=80&w=1000&auto=format&fit=crop"
+            src="/public/images/resume/avatar_resume.png"
             alt="Avatar"
             className="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500"
           />
@@ -169,17 +169,19 @@ const HolographicCard = () => {
         <h3 className="text-2xl font-black text-white mb-1 uppercase tracking-tight">
           {AUTHOR_NAME}
         </h3>
-        <p className="text-design-blue font-mono text-xs mb-4">{AUTHOR_ROLE}</p>
+        <p className="text-design-blue font-mono text-xs mb-4">
+          Automation Marketing Specialist
+        </p>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-2 w-full mt-2">
           <div className="bg-white/5 rounded p-2 border border-white/5">
             <div className="text-[10px] text-gray-500 uppercase">EXP</div>
-            <div className="text-sm font-bold text-white">4+ Yrs</div>
+            <div className="text-sm font-bold text-white">3+ Yrs</div>
           </div>
           <div className="bg-white/5 rounded p-2 border border-white/5">
             <div className="text-[10px] text-gray-500 uppercase">Projects</div>
-            <div className="text-sm font-bold text-white">25+</div>
+            <div className="text-sm font-bold text-white">15+</div>
           </div>
           <div className="bg-white/5 rounded p-2 border border-white/5">
             <div className="text-[10px] text-gray-500 uppercase">Status</div>
@@ -302,6 +304,13 @@ const DeployButton = () => {
     // Simulate download delay
     setTimeout(() => {
       setStatus("success");
+
+      // Open the Google Drive link in a new tab
+      window.open(
+        "https://drive.google.com/file/d/1dH4px7ij7yHx67cqWLxwbRtG8qe4ri-5/view?usp=sharing",
+        "_blank"
+      );
+
       // Reset after a while
       setTimeout(() => setStatus("idle"), 3000);
     }, 2000);
