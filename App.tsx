@@ -14,8 +14,9 @@ import Contact from "./components/Contact";
 import FlowConnector from "./components/FlowConnector";
 import { CursorProvider, useCursor } from "./components/GlobalCursor";
 import ProjectDetailN8n from "./components/ProjectDetailN8n";
-import ProjectDetailData from "./components/ProjectDetailData";
 import ProjectDetailVibe from "./components/ProjectDetailVibe";
+import ProjectDetailData from "./components/ProjectDetailData";
+
 // Types for View Navigation
 export type ViewState =
   | "home"
@@ -28,7 +29,13 @@ const MainContent: React.FC<{ onViewChange: (view: ViewState) => void }> = ({
   onViewChange,
 }) => {
   const { setIsActive } = useCursor();
-  const [isHoveringMain, setIsHoveringMain] = useState(false);
+  // Initialize to true so we don't flash the system cursor on mount
+  const [isHoveringMain, setIsHoveringMain] = useState(true);
+
+  useEffect(() => {
+    // Ensure custom cursor is active when returning to main view
+    setIsActive(true);
+  }, [setIsActive]);
 
   return (
     <motion.main

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useCursor } from "./GlobalCursor";
 
@@ -135,7 +135,19 @@ const ComparisonTable = () => {
 // --- MAIN COMPONENT ---
 
 const ProjectDetailN8n: React.FC<Props> = ({ onBack }) => {
-  const { setLabel } = useCursor();
+  const { setLabel, setIsActive } = useCursor();
+
+  useEffect(() => {
+    // Enable custom cursor mode globally for this page
+    document.body.classList.add("no-cursor");
+    setIsActive(true);
+
+    return () => {
+      // Cleanup: revert to normal cursor
+      document.body.classList.remove("no-cursor");
+      setIsActive(false);
+    };
+  }, [setIsActive]);
 
   return (
     <motion.div
