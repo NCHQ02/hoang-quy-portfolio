@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useCursor } from "./GlobalCursor";
+import { ViewState } from "../App";
 
 // --- SHARED UI COMPONENTS ---
 
@@ -320,6 +321,8 @@ interface ProjectCardProps {
   VisualComponent: React.FC;
   align?: "left" | "right";
   className?: string;
+  onViewCaseStudy?: () => void;
+  isComingSoon?: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -332,6 +335,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   VisualComponent,
   align = "left",
   className,
+  onViewCaseStudy,
+  isComingSoon = true,
 }) => {
   const { setLabel } = useCursor();
 
@@ -350,6 +355,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         }`}
         onMouseEnter={() => setLabel("Open")}
         onMouseLeave={() => setLabel(null)}
+        onClick={onViewCaseStudy}
       >
         {/* The Frame/Window Container */}
         <div className="w-full h-full rounded-xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 border border-white/10 flex flex-col">
@@ -425,11 +431,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onMouseEnter={() => setLabel("Link")}
+          onMouseEnter={() => setLabel(isComingSoon ? "Soon" : "Click")}
           onMouseLeave={() => setLabel(null)}
-          className={`px-6 py-3 rounded-lg font-bold text-sm bg-white text-black hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-none`}
+          onClick={onViewCaseStudy}
+          className={`px-6 py-3 rounded-lg font-bold text-sm bg-white text-black hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-none ${
+            !isComingSoon ? "shadow-[0_0_20px_rgba(255,255,255,0.3)]" : ""
+          }`}
         >
-          Coming Soon
+          {isComingSoon ? "Coming Soon" : "View Case Study"}
           <svg
             width="16"
             height="16"
@@ -448,7 +457,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  onViewChange?: (view: ViewState) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
   const { setLabel } = useCursor();
 
   return (
@@ -613,6 +626,8 @@ const Projects: React.FC = () => {
           color="bg-design-orange"
           VisualComponent={N8nVisual}
           align="left"
+          isComingSoon={false}
+          onViewCaseStudy={() => onViewChange && onViewChange("project-n8n")}
         />
 
         {/* 2. Vibe Coding */}
@@ -631,6 +646,8 @@ const Projects: React.FC = () => {
           color="bg-design-green"
           VisualComponent={VibeCodingVisual}
           align="right"
+          isComingSoon={false}
+          onViewCaseStudy={() => onViewChange && onViewChange("project-vibe")}
         />
 
         {/* 3. Data Engineering */}
@@ -643,6 +660,8 @@ const Projects: React.FC = () => {
           color="bg-design-blue"
           VisualComponent={DataVisual}
           align="left"
+          isComingSoon={false}
+          onViewCaseStudy={() => onViewChange && onViewChange("project-data")}
         />
       </div>
     </section>
