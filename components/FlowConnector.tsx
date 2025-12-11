@@ -500,25 +500,7 @@ const FlowConnector: React.FC = () => {
       ref={containerRef}
       className="relative w-full h-[120vh] overflow-visible pointer-events-none -mt-[20vh] z-30"
     >
-      {/* 0. Noise Texture Overlay (Consistency with Hero) */}
-      <div
-        className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay z-0"
-        style={{
-          backgroundImage:
-            'url("https://grainy-gradients.vercel.app/noise.svg")',
-        }}
-      ></div>
-
-      {/* 1. Background Grid (Localized & Faded) */}
-      <div
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          backgroundImage: "radial-gradient(#fff 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          maskImage:
-            "radial-gradient(circle at center, black 40%, transparent 90%)",
-        }}
-      />
+      {/* 0. Noise Texture Overlay REMOVED to match global black background */}
 
       {/* 2. Complex Prototype Connections (SVG Lines) */}
       <svg className="absolute inset-0 w-full h-full overflow-visible z-0 pointer-events-none">
