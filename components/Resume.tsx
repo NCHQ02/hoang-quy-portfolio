@@ -13,7 +13,7 @@ import { AUTHOR_NAME, AUTHOR_ROLE } from "../constants";
 
 const CareerPropertiesWidget = () => (
   <motion.div
-    initial={{ x: -100, rotateY: 90, opacity: 0 }} // 3D Flip Entrance
+    initial={{ x: -20, rotateY: 90, opacity: 0 }} // Reduced offset further
     whileInView={{ x: 0, rotateY: 0, opacity: 1 }}
     transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.5 }}
     style={{ perspective: 1000 }}
@@ -54,11 +54,11 @@ const CareerPropertiesWidget = () => (
 
 const ExportOptionsWidget = () => (
   <motion.div
-    initial={{ x: 100, rotateY: -90, opacity: 0 }} // 3D Flip Entrance (Right)
+    initial={{ x: 20, rotateY: -90, opacity: 0 }} // Reduced offset further
     whileInView={{ x: 0, rotateY: 0, opacity: 1 }}
     transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.7 }}
     style={{ perspective: 1000 }}
-    className="absolute right-6 top-1/3 w-56 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20 origin-right"
+    className="absolute right-6 top-1/3 w-56 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden xl:flex flex-col overflow-hidden z-20 origin-right"
   >
     <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
       <span className="text-[10px] font-bold text-gray-400 uppercase">
@@ -488,7 +488,7 @@ const Resume: React.FC = () => {
   return (
     <section
       id="resume"
-      className="py-32 px-4 relative overflow-hidden min-h-screen flex items-center"
+      className="py-32 px-4 relative min-h-screen flex items-center" // Removed overflow-hidden
     >
       {/* WIDGETS INJECTION */}
       <CareerPropertiesWidget />
