@@ -54,7 +54,7 @@ const LayersWidget = () => (
 
 const PrototypeActionsWidget = () => (
   <motion.div
-    initial={{ scale: 0, opacity: 0, x: 50 }} // Hologram Scale Start (Right)
+    initial={{ scale: 0, opacity: 0, x: 20 }} // Hologram Scale Start (Right) - Reduced from 50 to prevent clipping
     whileInView={{ scale: 1, opacity: 1, x: 0 }}
     transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.7 }}
     className="absolute right-6 top-1/4 flex flex-col gap-3 z-20 hidden 2xl:flex origin-top-right"
@@ -570,7 +570,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
   const { setLabel } = useCursor();
 
   return (
-    <section id="projects" className="py-32 px-4 relative overflow-hidden">
+    <section id="projects" className="py-32 px-4 relative">
       {/* SIDE WIDGETS INJECTION */}
       <LayersWidget />
       <PrototypeActionsWidget />
