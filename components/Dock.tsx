@@ -216,17 +216,33 @@ const ContactIcon = () => (
 interface DockItemData {
   id: string;
   label: string;
+  shortLabel?: string; // For mobile
   icon: React.ReactNode;
 }
 
 const ITEMS: DockItemData[] = [
-  { id: "hero", label: "Home", icon: <HomeIcon /> },
-  { id: "about", label: "About Me", icon: <AboutIcon /> },
-  { id: "projects", label: "Projects", icon: <ProjectsIcon /> },
-  { id: "skills", label: "Skills", icon: <SkillsIcon /> },
-  { id: "testimonials", label: "Testimonials", icon: <TestimonialsIcon /> },
-  { id: "resume", label: "Resume", icon: <ResumeIcon /> },
-  { id: "contact", label: "Contact", icon: <ContactIcon /> },
+  { id: "hero", label: "Home", shortLabel: "Home", icon: <HomeIcon /> },
+  { id: "about", label: "About Me", shortLabel: "About", icon: <AboutIcon /> },
+  {
+    id: "projects",
+    label: "Projects",
+    shortLabel: "Work",
+    icon: <ProjectsIcon />,
+  },
+  { id: "skills", label: "Skills", shortLabel: "Skills", icon: <SkillsIcon /> },
+  {
+    id: "testimonials",
+    label: "Testimonials",
+    shortLabel: "Social",
+    icon: <TestimonialsIcon />,
+  },
+  { id: "resume", label: "Resume", shortLabel: "CV", icon: <ResumeIcon /> },
+  {
+    id: "contact",
+    label: "Contact",
+    shortLabel: "Contact",
+    icon: <ContactIcon />,
+  },
 ];
 
 // --- COMPONENTS ---
@@ -286,9 +302,15 @@ const Dock = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] flex justify-center pointer-events-none pb-safe-area-bottom">
       {/* Container with safe area padding for iOS home indicator */}
-      <div className="relative pointer-events-auto w-full max-w-2xl px-2 md:px-4 pb-4 md:pb-6">
+      <div className="relative pointer-events-auto w-full max-w-2xl px-2 md:px-4 pb-2 md:pb-6">
         {/* The Dock Itself */}
-        <div className="relative flex items-center justify-between md:justify-center gap-1 md:gap-3 px-2 py-2 md:px-3 md:py-3 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] mx-2 md:mx-0">
+        <div
+          className={`relative flex items-end justify-between md:justify-center gap-1 md:gap-3 px-2 py-2 md:px-3 md:py-3 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/10 ${
+            isMobile
+              ? "rounded-t-2xl border-b-0 pb-4"
+              : "rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)]"
+          } mx-0 md:mx-0`}
+        >
           {ITEMS.map((item) => {
             const isActive = activeSection === item.id;
 
@@ -301,7 +323,7 @@ const Dock = () => {
                 whileTap={{ scale: 0.9 }}
                 animate={{
                   scale: isActive ? 1.1 : 1,
-                  translateY: isActive && !isMobile ? -5 : 0, // No bounce on mobile to save space
+                  translateY: isActive && !isMobile ? -5 : 0,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
@@ -314,37 +336,6 @@ const Dock = () => {
                   {item.label}
                   <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#2A2A2A] rotate-45 border-r border-b border-white/10" />
                 </div>
-
-                {/* Mobile Dynamic Island Label - FIXED: Right align for last item to avoid overflow */}
-                {isActive && isMobile && (
-                  <motion.div
-                    layoutId="mobileLabel"
-                    className={`absolute -top-14 bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-full text-[10px] text-white font-bold uppercase tracking-wider shadow-lg flex items-center gap-2 whitespace-nowrap z-50 pointer-events-none ${
-                      item.id === "contact"
-                        ? "right-0"
-                        : "left-1/2 -translate-x-1/2"
-                    }`}
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 500,
-                      damping: 30,
-                    }}
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-design-green animate-pulse" />
-                    {item.label}
-                    {/* Little arrow pointing down - Adjusted for alignment */}
-                    <div
-                      className={`absolute -bottom-1 w-2 h-2 bg-black/80 rotate-45 border-r border-b border-white/10 ${
-                        item.id === "contact"
-                          ? "right-4"
-                          : "left-1/2 -translate-x-1/2"
-                      }`}
-                    />
-                  </motion.div>
-                )}
 
                 {/* Icon Container - Responsive Size */}
                 <div
