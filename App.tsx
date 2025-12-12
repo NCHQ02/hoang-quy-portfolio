@@ -1,3 +1,7 @@
+// 1. Import cả Analytics và SpeedInsights
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Hero from "./components/Hero";
@@ -16,10 +20,6 @@ import { CursorProvider, useCursor } from "./components/GlobalCursor";
 import ProjectDetailN8n from "./components/ProjectDetailN8n";
 import ProjectDetailVibe from "./components/ProjectDetailVibe";
 import ProjectDetailData from "./components/ProjectDetailData";
-
-// 1. Import cả Analytics và SpeedInsights
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Types for View Navigation
 export type ViewState =
