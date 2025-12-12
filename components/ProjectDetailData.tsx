@@ -25,7 +25,7 @@ const DataWindow = ({
   children,
   title,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
 }) => (
   <div className="bg-[#0f172a] rounded-xl border border-white/10 shadow-2xl overflow-hidden font-mono text-xs relative group hover:border-design-blue/50 transition-colors">

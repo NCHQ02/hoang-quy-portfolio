@@ -9,6 +9,115 @@ import {
 import { useCursor } from "./GlobalCursor";
 import { AUTHOR_NAME, AUTHOR_ROLE } from "../constants";
 
+// --- SIDE WIDGETS (DESKTOP ONLY) ---
+
+const CareerPropertiesWidget = () => (
+  <motion.div
+    initial={{ x: -100, rotateY: 90, opacity: 0 }} // 3D Flip Entrance
+    whileInView={{ x: 0, rotateY: 0, opacity: 1 }}
+    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.5 }}
+    style={{ perspective: 1000 }}
+    className="absolute left-6 top-1/4 w-64 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden xl:flex flex-col overflow-hidden z-20 origin-left"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        Career Properties
+      </span>
+      <div className="w-2 h-2 rounded-full bg-design-green" />
+    </div>
+    <div className="p-3 space-y-2">
+      <div className="flex justify-between items-center text-xs text-gray-300">
+        <span>Role</span>
+        <span className="font-mono bg-white/5 px-1.5 rounded">Specialist</span>
+      </div>
+      <div className="flex justify-between items-center text-xs text-gray-300">
+        <span>Status</span>
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+          <span className="text-green-500 font-bold">Open</span>
+        </div>
+      </div>
+      <div className="flex justify-between items-center text-xs text-gray-300">
+        <span>Relocation</span>
+        <span className="font-mono bg-white/5 px-1.5 rounded">Yes</span>
+      </div>
+      <div className="h-px bg-white/10 my-2" />
+      <div className="flex justify-between items-center text-xs text-gray-300">
+        <span>Contract</span>
+        <div className="w-8 h-4 bg-design-blue rounded-full relative">
+          <div className="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full" />
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+const ExportOptionsWidget = () => (
+  <motion.div
+    initial={{ x: 100, rotateY: -90, opacity: 0 }} // 3D Flip Entrance (Right)
+    whileInView={{ x: 0, rotateY: 0, opacity: 1 }}
+    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.7 }}
+    style={{ perspective: 1000 }}
+    className="absolute right-6 top-1/3 w-56 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20 origin-right"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        Export Settings
+      </span>
+      <span className="text-[9px] text-design-blue">PDF</span>
+    </div>
+    <div className="p-3 space-y-3">
+      <div className="space-y-1">
+        <div className="text-[9px] text-gray-500 uppercase">Format</div>
+        <div className="flex gap-2">
+          <div className="flex-1 bg-design-blue/20 border border-design-blue text-white text-[10px] font-bold text-center py-1 rounded">
+            PDF
+          </div>
+          <div className="flex-1 bg-white/5 border border-transparent text-gray-500 text-[10px] text-center py-1 rounded">
+            JSON
+          </div>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <div className="text-[9px] text-gray-500 uppercase">Include</div>
+        <div className="flex items-center gap-2 text-xs text-gray-300">
+          <div className="w-3 h-3 border border-design-blue bg-design-blue rounded-sm flex items-center justify-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="3"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <span>Case Studies</span>
+        </div>
+        <div className="flex items-center gap-2 text-xs text-gray-300">
+          <div className="w-3 h-3 border border-design-blue bg-design-blue rounded-sm flex items-center justify-center">
+            <svg
+              width="8"
+              height="8"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="3"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <span>References</span>
+        </div>
+      </div>
+      <div className="bg-design-green text-black text-[10px] font-bold py-1.5 text-center rounded cursor-pointer hover:bg-white transition-colors">
+        Export Resume
+      </div>
+    </div>
+  </motion.div>
+);
+
 // --- ICONS ---
 
 const DownloadIcon = () => (
@@ -381,6 +490,10 @@ const Resume: React.FC = () => {
       id="resume"
       className="py-32 px-4 relative overflow-hidden min-h-screen flex items-center"
     >
+      {/* WIDGETS INJECTION */}
+      <CareerPropertiesWidget />
+      <ExportOptionsWidget />
+
       {/* === NEW HEADER DESIGN: CAREER LAUNCHPAD === */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
         {/* 1. Wireframe Number Background */}

@@ -3,6 +3,111 @@ import { motion } from "framer-motion";
 import { useCursor } from "./GlobalCursor";
 import { ViewState } from "../App";
 
+// --- SIDE WIDGETS (DESKTOP ONLY) ---
+
+const LayersWidget = () => (
+  <motion.div
+    initial={{ scale: 0, opacity: 0, y: 50 }} // Hologram Scale Start
+    whileInView={{ scale: 1, opacity: 1, y: 0 }} // Hologram Scale End
+    transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
+    className="absolute left-4 top-1/3 w-60 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20 origin-bottom-left"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        Pages & Layers
+      </span>
+      <span className="text-[10px] text-gray-500">Shift+L</span>
+    </div>
+    <div className="p-2 space-y-0.5">
+      <div className="px-2 py-1 text-[11px] text-gray-300 font-bold bg-white/5 rounded">
+        Page 1: Overview
+      </div>
+      <div className="pl-4">
+        <div className="flex items-center gap-2 px-2 py-1 hover:bg-white/5 rounded group cursor-default">
+          <div className="text-gray-500 text-[9px] group-hover:text-white">
+            #
+          </div>
+          <span className="text-[10px] text-gray-400 group-hover:text-white">
+            Case Study: n8n
+          </span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 hover:bg-white/5 rounded group cursor-default">
+          <div className="text-gray-500 text-[9px] group-hover:text-white">
+            #
+          </div>
+          <span className="text-[10px] text-gray-400 group-hover:text-white">
+            Case Study: Vibe
+          </span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 hover:bg-white/5 rounded group cursor-default">
+          <div className="text-gray-500 text-[9px] group-hover:text-white">
+            #
+          </div>
+          <span className="text-[10px] text-gray-400 group-hover:text-white">
+            Case Study: Data
+          </span>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
+const PrototypeActionsWidget = () => (
+  <motion.div
+    initial={{ scale: 0, opacity: 0, x: 50 }} // Hologram Scale Start (Right)
+    whileInView={{ scale: 1, opacity: 1, x: 0 }}
+    transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.7 }}
+    className="absolute right-6 top-1/4 flex flex-col gap-3 z-20 hidden 2xl:flex origin-top-right"
+  >
+    <div className="bg-[#1e1e1e] border border-white/10 p-2 rounded-lg shadow-xl flex flex-col items-center gap-4">
+      <button
+        className="w-8 h-8 rounded hover:bg-white/10 flex items-center justify-center text-white"
+        title="Play"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M5 3l14 9-14 9V3z" />
+        </svg>
+      </button>
+      <button
+        className="w-8 h-8 rounded hover:bg-white/10 flex items-center justify-center text-white"
+        title="Share"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+          <polyline points="16 6 12 2 8 6" />
+          <line x1="12" y1="2" x2="12" y2="15" />
+        </svg>
+      </button>
+      <div className="h-px w-4 bg-white/10" />
+      <button
+        className="w-8 h-8 rounded hover:bg-white/10 flex items-center justify-center text-design-blue"
+        title="Flow 1"
+      >
+        <span className="text-[10px] font-bold">100%</span>
+      </button>
+    </div>
+
+    <div className="bg-[#1e1e1e] border border-white/10 px-3 py-2 rounded-lg shadow-xl text-center">
+      <div className="text-[9px] text-gray-500 uppercase font-bold mb-1">
+        Flow starting point
+      </div>
+      <div className="flex items-center gap-1.5 text-white">
+        <div className="w-3 h-3 bg-design-blue flex items-center justify-center text-[8px] font-bold">
+          1
+        </div>
+        <span className="text-[10px]">Main Flow</span>
+      </div>
+    </div>
+  </motion.div>
+);
+
 // --- SHARED UI COMPONENTS ---
 
 const SelectionHandle = ({ className }: { className?: string }) => (
@@ -466,6 +571,10 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
 
   return (
     <section id="projects" className="py-32 px-4 relative overflow-hidden">
+      {/* SIDE WIDGETS INJECTION */}
+      <LayersWidget />
+      <PrototypeActionsWidget />
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* === NEW HEADER DESIGN: FIGMA / MESSENGER STYLE MIX === */}
         <div className="mb-40 relative flex justify-center">

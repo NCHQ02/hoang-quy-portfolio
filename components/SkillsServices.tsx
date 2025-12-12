@@ -8,6 +8,135 @@ import {
 } from "framer-motion";
 import { useCursor } from "./GlobalCursor";
 
+// --- SIDE WIDGETS (DESKTOP ONLY) ---
+
+const DependencyGraphWidget = () => (
+  <motion.div
+    initial={{ x: -50, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+    className="absolute left-6 top-1/4 w-56 bg-[#0D1117] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20 font-mono text-[10px]"
+  >
+    <div className="bg-[#161B22] px-3 py-2 border-b border-white/5 flex justify-between items-center text-gray-400">
+      <span className="font-bold">package.json</span>
+      <span>1.2KB</span>
+    </div>
+    <div className="p-3 text-gray-400">
+      <div>
+        <span className="text-design-purple">"dependencies"</span>: {"{"}
+      </div>
+      <div className="pl-3 flex flex-col gap-0.5">
+        {/* Staggered typing effect simulation */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6 }}
+        >
+          <span className="text-design-green">"react"</span>: "^18.2.0",
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <span className="text-design-green">"framer-motion"</span>: "^10.0",
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8 }}
+        >
+          <span className="text-design-green">"three"</span>: "^0.150.0",
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.9 }}
+        >
+          <span className="text-design-green">"n8n"</span>: "latest",
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.0 }}
+        >
+          <span className="text-design-green">"python"</span>: "3.11"
+        </motion.div>
+      </div>
+      <div>{"}"}</div>
+    </div>
+  </motion.div>
+);
+
+const SystemMonitorWidget = () => (
+  <motion.div
+    initial={{ x: 50, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ delay: 0.7, type: "spring", stiffness: 100 }}
+    className="absolute right-6 top-1/3 w-64 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        System Monitor
+      </span>
+      <div className="flex gap-1">
+        <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+        <span className="text-[9px] text-green-500">Live</span>
+      </div>
+    </div>
+    <div className="p-4 space-y-4">
+      <div>
+        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+          <span>Creative Flow</span>
+          <span>92%</span>
+        </div>
+        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: ["0%", "80%", "95%", "85%"] }}
+            transition={{
+              duration: 3,
+              times: [0, 0.3, 0.6, 1],
+              ease: "easeInOut",
+              delay: 0.8,
+            }}
+            className="h-full bg-design-purple"
+          />
+        </div>
+      </div>
+      <div>
+        <div className="flex justify-between text-[10px] text-gray-400 mb-1">
+          <span>Problem Solving</span>
+          <span>88%</span>
+        </div>
+        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: ["0%", "70%", "88%", "75%"] }}
+            transition={{
+              duration: 4,
+              times: [0, 0.3, 0.6, 1],
+              ease: "easeInOut",
+              delay: 1,
+            }}
+            className="h-full bg-design-blue"
+          />
+        </div>
+      </div>
+      <div className="flex gap-2 mt-2">
+        <div className="flex-1 bg-black/20 rounded p-1 text-center">
+          <div className="text-[9px] text-gray-500">PING</div>
+          <div className="text-xs text-white font-mono">12ms</div>
+        </div>
+        <div className="flex-1 bg-black/20 rounded p-1 text-center">
+          <div className="text-[9px] text-gray-500">UPTIME</div>
+          <div className="text-xs text-white font-mono">99.9%</div>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 // --- ICONS ---
 
 const CodeIcon = () => (
@@ -480,6 +609,10 @@ const SkillsServices: React.FC = () => {
 
   return (
     <section id="skills" className="py-32 px-4 relative overflow-hidden">
+      {/* SIDE WIDGETS INJECTION */}
+      <DependencyGraphWidget />
+      <SystemMonitorWidget />
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* === NEW HEADER DESIGN: DEV MODE / TOOLBOX === */}
         <div className="mb-32 relative flex flex-col items-center justify-center select-none">

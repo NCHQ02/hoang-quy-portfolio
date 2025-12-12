@@ -29,6 +29,115 @@ const SelectionHandle = ({ className }: { className?: string }) => (
   />
 );
 
+// --- SIDE WIDGETS (DESKTOP ONLY) ---
+
+const LocalVariablesWidget = () => (
+  <motion.div
+    initial={{ x: -100, opacity: 0 }} // Drawer Slide Start
+    whileInView={{ x: 0, opacity: 1 }} // Drawer Slide End
+    transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
+    className="absolute left-4 top-1/4 w-64 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        Local Variables
+      </span>
+      <div className="flex gap-1">
+        <div className="w-2 h-2 rounded-full bg-white/20" />
+        <div className="w-2 h-2 rounded-full bg-white/20" />
+      </div>
+    </div>
+    <div className="p-2 space-y-1">
+      {[
+        {
+          name: "Exp.Level",
+          value: "Mid-Senior",
+          type: "String",
+          color: "text-design-green",
+        },
+        {
+          name: "Coffee",
+          value: "100%",
+          type: "Float",
+          color: "text-design-orange",
+        },
+        {
+          name: "Mode",
+          value: "Dark",
+          type: "Boolean",
+          color: "text-design-purple",
+        },
+        {
+          name: "Location",
+          value: "VN",
+          type: "String",
+          color: "text-blue-400",
+        },
+      ].map((v, i) => (
+        <div
+          key={i}
+          className="flex justify-between items-center px-2 py-1.5 hover:bg-white/5 rounded group cursor-default"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-gray-500 font-mono border border-white/10 px-1 rounded">
+              #
+            </span>
+            <span className="text-xs text-gray-300 group-hover:text-white transition-colors">
+              {v.name}
+            </span>
+          </div>
+          <span className={`text-xs font-mono ${v.color}`}>{v.value}</span>
+        </div>
+      ))}
+    </div>
+    <div className="bg-[#2C2C2E]/50 px-3 py-1.5 border-t border-white/5 flex justify-between items-center text-[9px] text-gray-500">
+      <span>4 variables</span>
+      <span>+ Create variable</span>
+    </div>
+  </motion.div>
+);
+
+const VersionHistoryWidget = () => (
+  <motion.div
+    initial={{ x: 100, opacity: 0 }} // Drawer Slide Start (Right side)
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.4 }}
+    className="absolute right-4 top-1/3 w-56 bg-[#1e1e1e] border border-white/10 rounded-lg shadow-2xl hidden 2xl:flex flex-col overflow-hidden z-20"
+  >
+    <div className="bg-[#2C2C2E] px-3 py-2 border-b border-white/5 flex justify-between items-center">
+      <span className="text-[10px] font-bold text-gray-400 uppercase">
+        Version History
+      </span>
+      <span className="text-[10px] text-design-blue cursor-pointer">
+        View all
+      </span>
+    </div>
+    <div className="p-3 relative">
+      <div className="absolute left-[19px] top-4 bottom-4 w-px bg-white/10" />
+      {[
+        { time: "Just now", action: "Portfolio Updated", author: "You" },
+        { time: "2h ago", action: "Refined UX Flows", author: "You" },
+        { time: "Yesterday", action: "Integrated n8n", author: "You" },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="relative flex items-start gap-3 mb-4 last:mb-0 group"
+        >
+          <div className="w-2.5 h-2.5 mt-1 rounded-full bg-design-blue border-2 border-[#1e1e1e] relative z-10" />
+          <div className="flex flex-col">
+            <span className="text-xs text-white font-medium group-hover:text-design-blue transition-colors">
+              {item.action}
+            </span>
+            <span className="text-[10px] text-gray-500">
+              {item.time} by {item.author}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </motion.div>
+);
+
 // --- SUB-COMPONENTS ---
 
 interface UIPanelProps {
@@ -115,6 +224,10 @@ const About: React.FC = () => {
 
   return (
     <section id="about" className="py-32 px-4 relative">
+      {/* SIDE WIDGETS INJECTION */}
+      <LocalVariablesWidget />
+      <VersionHistoryWidget />
+
       <div className="max-w-7xl mx-auto">
         {/* === NEW HEADER DESIGN: FIGMA / DESIGN SYSTEM STYLE === */}
         <div className="mb-32 relative flex justify-center items-center select-none">
