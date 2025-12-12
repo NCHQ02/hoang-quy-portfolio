@@ -3,23 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // --- ICONS ---
 
-const CursorIcon = ({ className }: { className?: string }) => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    className={`drop-shadow-md ${className}`}
-  >
-    <path
-      d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z"
-      fill="currentColor"
-      stroke="white"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
+// CursorIcon removed as it is no longer used
 
 const HomeIcon = () => (
   <svg viewBox="0 0 48 48" className="w-full h-full drop-shadow-lg">
@@ -327,15 +311,7 @@ const Dock = () => {
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {/* Desktop Tooltip */}
-                <div
-                  className={`hidden md:block absolute -top-10 px-2 py-1 bg-[#2A2A2A] text-white text-[10px] font-bold rounded shadow-lg mb-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10 ${
-                    isActive ? "opacity-100" : ""
-                  }`}
-                >
-                  {item.label}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#2A2A2A] rotate-45 border-r border-b border-white/10" />
-                </div>
+                {/* Desktop Tooltip Removed for cleaner look */}
 
                 {/* Icon Container - Responsive Size */}
                 <div
@@ -348,40 +324,17 @@ const Dock = () => {
                   {item.icon}
                 </div>
 
-                {/* Active Indicator & Cursor (Desktop Only) */}
+                {/* Active Indicator (Desktop Only) - Cursor removed */}
                 {isActive && !isMobile && (
-                  <>
-                    <motion.div
-                      layoutId="activeDot"
-                      className="absolute -bottom-2 w-1 h-1 bg-white/80 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-
-                    <motion.div
-                      layoutId="dockCursor"
-                      className="absolute -bottom-5 left-1/2 -translate-x-1/2 ml-3 z-50 pointer-events-none"
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 25,
-                      }}
-                    >
-                      <div className="relative">
-                        <CursorIcon className="text-design-yellow w-6 h-6 drop-shadow-xl" />
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8, x: -5 }}
-                          animate={{ opacity: 1, scale: 1, x: 0 }}
-                          className="absolute left-4 top-3 bg-design-yellow text-black text-[10px] font-black px-1.5 py-0.5 rounded-sm whitespace-nowrap border border-black/10 shadow-sm"
-                        >
-                          {item.label}
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  </>
+                  <motion.div
+                    layoutId="activeDot"
+                    className="absolute -bottom-2 w-1 h-1 bg-white/80 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30,
+                    }}
+                  />
                 )}
 
                 {/* Active Indicator (Mobile Only) */}
@@ -404,10 +357,7 @@ const Dock = () => {
             whileHover={{ scale: 1.1, translateY: -5 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="absolute -top-10 px-2 py-1 bg-[#2A2A2A] text-white text-[10px] font-bold rounded shadow-lg mb-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
-              Top
-              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#2A2A2A] rotate-45 border-r border-b border-white/10" />
-            </div>
+            {/* Tooltip Removed for cleaner look */}
             <svg viewBox="0 0 48 48" className="w-full h-full drop-shadow-lg">
               <path
                 d="M10 12L12 40C12 42.2091 13.7909 44 16 44H32C34.2091 44 36 42.2091 36 40L38 12"
