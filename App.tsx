@@ -16,8 +16,10 @@ import { CursorProvider, useCursor } from "./components/GlobalCursor";
 import ProjectDetailN8n from "./components/ProjectDetailN8n";
 import ProjectDetailVibe from "./components/ProjectDetailVibe";
 import ProjectDetailData from "./components/ProjectDetailData";
-// Import Analytics cho React/Vite
+
+// 1. Import cả Analytics và SpeedInsights
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Types for View Navigation
 export type ViewState =
@@ -137,8 +139,10 @@ const App: React.FC = () => {
           {currentView === "home" && <Dock />}
         </div>
       </div>
-      {/* Component Analytics được đặt ở đây để ghi nhận traffic */}
+
+      {/* 2. Đặt các component theo dõi hiệu năng ở đây */}
       <Analytics />
+      <SpeedInsights />
     </CursorProvider>
   );
 };
