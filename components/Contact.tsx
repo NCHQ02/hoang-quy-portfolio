@@ -22,7 +22,7 @@ const NotificationWidget = () => (
         <span className="text-[9px] text-gray-400">now</span>
       </div>
       <p className="text-[10px] text-gray-400 leading-tight">
-        HR: "Hey Hoang, saw your portfolio. Are you available for..."
+        HR: "Hey Quy Xink Dep, saw your portfolio. Are you available for..."
       </p>
     </div>
   </motion.div>
