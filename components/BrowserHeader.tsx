@@ -46,7 +46,7 @@ const BrowserHeader: React.FC = () => {
           {/* Tabs Container */}
           <div className="flex flex-1 items-end gap-1 overflow-hidden">
             {/* Active Tab */}
-            <div className="relative group min-w-[160px] max-w-[240px] flex-1">
+            <div className="relative group min-w-[140px] max-w-[240px] flex-1">
               <div className="bg-[#3a3a3a] text-white px-4 py-2 rounded-t-lg text-xs font-medium flex items-center justify-between shadow-[-1px_-1px_2px_rgba(255,255,255,0.05)] relative z-10">
                 <div className="flex items-center gap-2 truncate">
                   <div className="w-3 h-3 bg-gradient-to-tr from-design-blue to-design-purple rounded-sm" />
@@ -58,12 +58,38 @@ const BrowserHeader: React.FC = () => {
               </div>
             </div>
 
-            {/* Inactive Tab */}
+            {/* Inactive Tab - 2025 */}
             <div className="relative group min-w-[120px] max-w-[200px] hidden sm:block opacity-60 hover:opacity-100 transition-opacity">
               <div className="bg-[#2a2a2a] text-gray-400 px-4 py-2 rounded-t-lg text-xs font-medium flex items-center justify-between border-r border-white/5">
                 <div className="flex items-center gap-2 truncate">
                   <div className="w-3 h-3 bg-gray-600 rounded-sm" />
                   <span className="truncate">Old Projects (2025)</span>
+                </div>
+                <span className="opacity-0 group-hover:opacity-100 text-white/50 hover:text-white cursor-pointer transition-opacity">
+                  ×
+                </span>
+              </div>
+            </div>
+
+            {/* Inactive Tab - 2024 (NEW) */}
+            <div className="relative group min-w-[100px] max-w-[160px] hidden md:block opacity-60 hover:opacity-100 transition-opacity">
+              <div className="bg-[#2a2a2a] text-gray-400 px-4 py-2 rounded-t-lg text-xs font-medium flex items-center justify-between border-r border-white/5">
+                <div className="flex items-center gap-2 truncate">
+                  <div className="w-3 h-3 bg-gray-600 rounded-sm" />
+                  <span className="truncate">Publicis Groupe (2024)</span>
+                </div>
+                <span className="opacity-0 group-hover:opacity-100 text-white/50 hover:text-white cursor-pointer transition-opacity">
+                  ×
+                </span>
+              </div>
+            </div>
+
+            {/* Inactive Tab - 2023 (NEW) */}
+            <div className="relative group min-w-[100px] max-w-[160px] hidden lg:block opacity-60 hover:opacity-100 transition-opacity">
+              <div className="bg-[#2a2a2a] text-gray-400 px-4 py-2 rounded-t-lg text-xs font-medium flex items-center justify-between border-r border-white/5">
+                <div className="flex items-center gap-2 truncate">
+                  <div className="w-3 h-3 bg-gray-600 rounded-sm" />
+                  <span className="truncate">Start Career Path (2023)</span>
                 </div>
                 <span className="opacity-0 group-hover:opacity-100 text-white/50 hover:text-white cursor-pointer transition-opacity">
                   ×
@@ -150,7 +176,7 @@ const BrowserHeader: React.FC = () => {
                 fill="currentColor"
                 className="text-gray-500 group-hover:text-white transition-colors"
               >
-                <path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z" />
+                <path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2 2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z" />
               </svg>
               <span className="text-[13px] text-white selection:bg-design-blue selection:text-white font-sans tracking-wide">
                 {url}
