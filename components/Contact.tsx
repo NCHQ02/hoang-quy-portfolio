@@ -35,7 +35,7 @@ const QuickActionsWidget = () => (
     transition={{ type: "spring", stiffness: 120, damping: 12, delay: 0.7 }}
     className="absolute right-6 top-1/4 flex flex-col gap-2 z-20 hidden 2xl:flex origin-top-right"
   >
-    <div className="bg-[#1e1e1e] border border-white/10 p-2 rounded-lg shadow-xl flex flex-col gap-2">
+    <div className="bg-[#1e1e1e] border border-white/10 p-2 rounded-lg shadow-xl flex flex-col items-center gap-2">
       <div className="w-10 h-10 rounded bg-[#2C2C2E] hover:bg-white/10 flex items-center justify-center cursor-pointer transition-colors group">
         <span className="text-xl group-hover:scale-110 transition-transform">
           📧
