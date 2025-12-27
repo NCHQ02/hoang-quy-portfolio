@@ -220,7 +220,7 @@ const ITEMS: DockItemData[] = [
     shortLabel: "Social",
     icon: <TestimonialsIcon />,
   },
-  { id: "resume", label: "Resume", shortLabel: "CV", icon: <ResumeIcon /> },
+  { id: "resume", label: "Resume", shortLabel: "Resume", icon: <ResumeIcon /> },
   {
     id: "contact",
     label: "Contact",
@@ -241,6 +241,8 @@ const Dock = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   // Logic to detect active section on scroll
   useEffect(() => {
@@ -297,11 +299,15 @@ const Dock = () => {
         >
           {ITEMS.map((item) => {
             const isActive = activeSection === item.id;
+            const isHovered = hoveredNode === item.id;
+            const showTooltip = isActive || (isHovered && !isMobile);
 
             return (
               <motion.div
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                onMouseEnter={() => setHoveredNode(item.id)}
+                onMouseLeave={() => setHoveredNode(null)}
                 className="relative group flex flex-col items-center flex-1 md:flex-none"
                 whileHover={{ scale: 1.15, translateY: -10 }}
                 whileTap={{ scale: 0.9 }}
@@ -311,7 +317,31 @@ const Dock = () => {
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {/* Desktop Tooltip Removed for cleaner look */}
+                {/* Tooltip / Title */}
+                <AnimatePresence>
+                  {showTooltip && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 5, scale: 0.8 }}
+                      className={`absolute -top-10 md:-top-12 px-2 py-1 md:px-3 md:py-1.5 rounded-lg bg-[#2C2C2E] border border-white/10 text-white shadow-xl whitespace-nowrap z-20 pointer-events-none ${
+                        isActive
+                          ? "text-[10px] md:text-xs font-bold"
+                          : "text-[10px] text-gray-400"
+                      }`}
+                    >
+                      {isActive && (
+                        <span className="mr-1.5 text-design-green">●</span>
+                      )}
+                      {item.shortLabel && isMobile
+                        ? item.shortLabel
+                        : item.label}
+
+                      {/* Triangle Pointer */}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#2C2C2E]" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Icon Container - Responsive Size */}
                 <div
@@ -353,11 +383,26 @@ const Dock = () => {
 
           {/* Trash/Reset (Hidden on Mobile to save space) */}
           <motion.div
-            className="hidden md:flex w-12 h-12 rounded-xl cursor-pointer opacity-70 hover:opacity-100 transition-opacity items-center justify-center group"
+            className="hidden md:flex w-12 h-12 rounded-xl cursor-pointer opacity-70 hover:opacity-100 transition-opacity items-center justify-center group relative"
             whileHover={{ scale: 1.1, translateY: -5 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onMouseEnter={() => setHoveredNode("reset")}
+            onMouseLeave={() => setHoveredNode(null)}
           >
-            {/* Tooltip Removed for cleaner look */}
+            <AnimatePresence>
+              {hoveredNode === "reset" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 5, scale: 0.8 }}
+                  className="absolute -top-12 px-3 py-1.5 rounded-lg bg-[#2C2C2E] border border-white/10 text-[10px] text-white shadow-xl whitespace-nowrap z-20 pointer-events-none"
+                >
+                  Scroll to Top
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-[#2C2C2E]" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <svg viewBox="0 0 48 48" className="w-full h-full drop-shadow-lg">
               <path
                 d="M10 12L12 40C12 42.2091 13.7909 44 16 44H32C34.2091 44 36 42.2091 36 40L38 12"
