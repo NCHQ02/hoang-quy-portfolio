@@ -409,7 +409,7 @@ const ProjectDetailData: React.FC<Props> = ({ onBack }) => {
           >
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 px-3 py-1 rounded-full mb-6 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm">
               <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-              Data Architecture Case Study
+              Data Intelligence & Analytics Case Study
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
