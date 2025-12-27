@@ -629,8 +629,8 @@ const ProjectDetailData: React.FC<Props> = ({ onBack }) => {
                       Automation:{" "}
                       <span className="text-design-orange">n8n / Airflow</span>.
                       <br />
-                      Channels: Zalo ZNS, Email API, Facebook Custom Audiences
-                      (Reverse ETL).
+                      Channels: Zalo ZNS, Zalo Broadcast, Email Marketing,
+                      Facebook Custom Audiences (Reverse ETL).
                     </span>
                   }
                 />
