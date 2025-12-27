@@ -212,7 +212,7 @@ const SegmentationCluster = () => {
         </div>
 
         {/* Churn Risk (Top Left) */}
-        <div className="absolute top-12 left-12 w-20 h-20 rounded-full border border-red-500/30 bg-red-500/5 flex flex-col items-center justify-center">
+        <div className="absolute top-12 left-24 w-20 h-20 rounded-full border border-red-500/30 bg-red-500/5 flex flex-col items-center justify-center">
           <div className="text-red-400 text-[10px] font-bold">AT RISK</div>
           <span className="text-[8px] text-gray-500 text-center">
             High Value / Low Eng
@@ -220,7 +220,7 @@ const SegmentationCluster = () => {
         </div>
 
         {/* New/Low (Bottom Left) */}
-        <div className="absolute bottom-8 left-8 w-24 h-24 rounded-full border border-blue-500/30 bg-blue-500/5 flex flex-col items-center justify-center">
+        <div className="absolute bottom-8 left-20 w-24 h-24 rounded-full border border-blue-500/30 bg-blue-500/5 flex flex-col items-center justify-center">
           <div className="text-blue-400 text-[10px] font-bold">NEW USERS</div>
           <span className="text-[8px] text-gray-500">Acquisition</span>
         </div>
