@@ -29,9 +29,10 @@ export type ViewState =
   | "project-data";
 
 // Internal component to handle the hovering logic for the main area
-const MainContent: React.FC<{ onViewChange: (view: ViewState) => void }> = ({
-  onViewChange,
-}) => {
+const MainContent: React.FC<{
+  onViewChange: (view: ViewState) => void;
+  restoreId?: string | null;
+}> = ({ onViewChange, restoreId }) => {
   const { setIsActive } = useCursor();
   // Initialize to true so we don't flash the system cursor on mount
   const [isHoveringMain, setIsHoveringMain] = useState(true);
@@ -39,7 +40,19 @@ const MainContent: React.FC<{ onViewChange: (view: ViewState) => void }> = ({
   useEffect(() => {
     // Ensure custom cursor is active when returning to main view
     setIsActive(true);
-  }, [setIsActive]);
+
+    // Scroll restoration logic
+    if (restoreId) {
+      setTimeout(() => {
+        const el = document.getElementById(restoreId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 500); // Delay to allow animation/mount to complete
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [setIsActive, restoreId]);
 
   return (
     <motion.main
@@ -91,11 +104,28 @@ const MainContent: React.FC<{ onViewChange: (view: ViewState) => void }> = ({
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>("home");
+  const previousView = React.useRef<ViewState>("home");
 
-  // Scroll to top when view changes
+  // Scroll to top when view changes TO a project view
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (currentView !== "home") {
+      window.scrollTo(0, 0);
+    }
   }, [currentView]);
+
+  const handleBack = () => {
+    previousView.current = currentView;
+    setCurrentView("home");
+  };
+
+  const getRestoreId = () => {
+    if (currentView === "home") {
+      if (previousView.current === "project-n8n") return "project-n8n-card";
+      if (previousView.current === "project-vibe") return "project-vibe-card";
+      if (previousView.current === "project-data") return "project-data-card";
+    }
+    return null;
+  };
 
   return (
     <CursorProvider>
@@ -116,22 +146,17 @@ const App: React.FC = () => {
         <div className="relative z-10 pt-20">
           <AnimatePresence mode="wait">
             {currentView === "home" ? (
-              <MainContent key="home" onViewChange={setCurrentView} />
+              <MainContent
+                key="home"
+                onViewChange={setCurrentView}
+                restoreId={getRestoreId()}
+              />
             ) : currentView === "project-n8n" ? (
-              <ProjectDetailN8n
-                key="n8n"
-                onBack={() => setCurrentView("home")}
-              />
+              <ProjectDetailN8n key="n8n" onBack={handleBack} />
             ) : currentView === "project-vibe" ? (
-              <ProjectDetailVibe
-                key="vibe"
-                onBack={() => setCurrentView("home")}
-              />
+              <ProjectDetailVibe key="vibe" onBack={handleBack} />
             ) : currentView === "project-data" ? (
-              <ProjectDetailData
-                key="data"
-                onBack={() => setCurrentView("home")}
-              />
+              <ProjectDetailData key="data" onBack={handleBack} />
             ) : null}
           </AnimatePresence>
 

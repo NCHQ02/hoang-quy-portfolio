@@ -430,6 +430,7 @@ const DataVisual = () => {
 
 interface ProjectCardProps {
   id: string;
+  sectionId?: string;
   title: string;
   subtitle: string;
   description: string;
@@ -444,6 +445,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   id,
+  sectionId,
   title,
   subtitle,
   description,
@@ -459,6 +461,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
+      id={sectionId}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -740,6 +743,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
         {/* 1. n8n Automation */}
         <ProjectCard
           id="01"
+          sectionId="project-n8n-card"
           title="n8n Automation Workflow"
           subtitle="Business Process Automation"
           description="Automating repetitive business tasks using n8n and AI Agents. Features include social media auto-posting, intelligent content research, and seamless data handling across platforms."
@@ -754,6 +758,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
         {/* 2. Vibe Coding */}
         <ProjectCard
           id="02"
+          sectionId="project-vibe-card"
           title="Vibe Coding Product Suite"
           subtitle="Product Engineering Tools"
           description="A suite of utility products including an auto-tagging tool for GTM/GA, an Offline Event Reward Management App, and a Mini-CMS for Affiliate notification management."
@@ -774,6 +779,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
         {/* 3. Data Engineering (UPDATED) */}
         <ProjectCard
           id="03"
+          sectionId="project-data-card"
           title="Data Intelligence & Analytics"
           subtitle="BI & Customer Insights"
           description="Transforming raw data into clear business insights. Specializing in Data Cleaning, Customer Segmentation, and interactive dashboards using Power BI and Looker Studio."
