@@ -173,7 +173,7 @@ const SegmentationCluster = () => {
       />
 
       {/* Axis Labels */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-gray-500 tracking-widest">
+      <div className="absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-[9px] text-gray-500 tracking-widest">
         VALUE (LTV)
       </div>
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[9px] text-gray-500 tracking-widest">
@@ -214,7 +214,9 @@ const SegmentationCluster = () => {
         {/* Churn Risk (Top Left) */}
         <div className="absolute top-12 left-12 w-20 h-20 rounded-full border border-red-500/30 bg-red-500/5 flex flex-col items-center justify-center">
           <div className="text-red-400 text-[10px] font-bold">AT RISK</div>
-          <span className="text-[8px] text-gray-500">High Value / Low Eng</span>
+          <span className="text-[8px] text-gray-500 text-center">
+            High Value / Low Eng
+          </span>
         </div>
 
         {/* New/Low (Bottom Left) */}
