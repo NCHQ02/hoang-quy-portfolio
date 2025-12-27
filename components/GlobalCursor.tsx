@@ -1,5 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
+import { motion, useMotionValue } from "framer-motion";
 
 // --- TYPES ---
 
@@ -27,29 +33,26 @@ export const CursorProvider: React.FC<{ children: React.ReactNode }> = ({
   const [label, setLabel] = useState<string | null>(null);
   const [color, setColor] = useState<string>("text-design-pink"); // Default pink
   const [isActive, setIsActive] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Mouse Physics
+  // Mouse position - using direct DOM manipulation for zero-lag cursor
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  // --- PHYSICS CONFIGURATION (High DPI / Fast Feel) ---
-  // mass: Lower = lighter/faster start. 0.01 makes it virtually weightless.
-  // stiffness: Higher = snaps to position faster. 4000 is near-instant.
-  // damping: Higher = prevents wobbling when stopping.
-  const springConfig = { damping: 80, stiffness: 4000, mass: 0.01 };
-
-  const cursorX = useSpring(mouseX, springConfig);
-  const cursorY = useSpring(mouseY, springConfig);
-
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      // Directly update motion values without processing to reduce lag
+      // Use requestAnimationFrame for smooth 60fps updates
+      // Direct DOM manipulation bypasses React rendering for maximum performance
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+      // Also update motion values for any components that might need them
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
 
-    // Use 'pointermove' instead of 'mousemove' for slightly better performance on some devices
-    window.addEventListener("pointermove", moveCursor);
+    // Use 'pointermove' for better cross-device performance
+    window.addEventListener("pointermove", moveCursor, { passive: true });
     return () => window.removeEventListener("pointermove", moveCursor);
   }, [mouseX, mouseY]);
 
@@ -57,12 +60,13 @@ export const CursorProvider: React.FC<{ children: React.ReactNode }> = ({
     <CursorContext.Provider value={{ setLabel, setColor, setIsActive }}>
       {children}
 
-      {/* GLOBAL CURSOR ELEMENT */}
+      {/* GLOBAL CURSOR ELEMENT - Using direct transform for zero-lag movement */}
       <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block"
+        ref={cursorRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block will-change-transform"
         style={{
-          x: cursorX,
-          y: cursorY,
+          // Initial position off-screen, will be updated by pointermove
+          transform: "translate3d(-100px, -100px, 0)",
         }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{
