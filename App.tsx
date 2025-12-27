@@ -103,11 +103,51 @@ const MainContent: React.FC<{
 };
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<ViewState>("home");
+  // Helper function to get view from URL path
+  const getViewFromPath = (path: string): ViewState => {
+    if (path === "/projects/n8n") return "project-n8n";
+    if (path === "/projects/vibe") return "project-vibe";
+    if (path === "/projects/data") return "project-data";
+    return "home";
+  };
+
+  // Helper function to get path from view
+  const getPathFromView = (view: ViewState): string => {
+    if (view === "project-n8n") return "/projects/n8n";
+    if (view === "project-vibe") return "/projects/vibe";
+    if (view === "project-data") return "/projects/data";
+    return "/";
+  };
+
+  // Initialize view from URL on mount
+  const [currentView, setCurrentView] = useState<ViewState>(() => {
+    return getViewFromPath(window.location.pathname);
+  });
   const previousView = React.useRef<ViewState>("home");
 
-  // Scroll to top when view changes TO a project view
+  // Handle browser back/forward buttons
   useEffect(() => {
+    const handlePopState = () => {
+      const newView = getViewFromPath(window.location.pathname);
+      // Track the previous view before changing
+      if (currentView !== "home" && newView === "home") {
+        previousView.current = currentView;
+      }
+      setCurrentView(newView);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [currentView]);
+
+  // Update URL when view changes
+  useEffect(() => {
+    const newPath = getPathFromView(currentView);
+    if (window.location.pathname !== newPath) {
+      window.history.pushState({}, "", newPath);
+    }
+
+    // Scroll to top when view changes TO a project view
     if (currentView !== "home") {
       window.scrollTo(0, 0);
     }
