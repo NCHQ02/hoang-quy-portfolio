@@ -375,8 +375,8 @@ const About: React.FC = () => {
             </p>
             <p className="mt-6 text-gray-400">
               I am a Technical Automation Marketing Specialist from a Big4
-              Global Agency, specializing in high-impact CRM and data-driven
-              marketing. My core strength is the end-to-end execution of
+              Global Agency, specializing in high-impact CRM and Data-Driven
+              Marketing. My core strength is the end-to-end execution of
               multi-channel CRM campaigns via SFMC, Zalo OA, Email, etc.,
               designing automated customer journeys to optimize conversion and
               retention. <br></br>
