@@ -19,3 +19,22 @@ export interface Project {
   tags: string[];
   link?: string;
 }
+
+export enum ViewState {
+  CHAT = "chat",
+  PROJECTS = "projects",
+  SETTINGS = "settings",
+}
+
+export enum Role {
+  USER = "user",
+  MODEL = "model",
+}
+
+export interface Message {
+  id: string;
+  role: Role;
+  text: string;
+  timestamp: Date;
+  isError?: boolean;
+}

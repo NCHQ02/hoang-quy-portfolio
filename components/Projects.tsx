@@ -324,13 +324,13 @@ const VibeCodingVisual = () => {
   );
 };
 
-// 3. Data Pipeline & Segmentation Visual
+// 3. Data Intelligence & BI Visual
 const DataVisual = () => {
   return (
     <div className="relative w-full h-full bg-[#1E1E2E] rounded-b-xl overflow-hidden p-4 grid grid-cols-2 gap-4">
-      {/* Added Grid Background for Data Visualization */}
+      {/* Background with slight grid for BI feel */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-20"
+        className="absolute inset-0 z-0 pointer-events-none opacity-10"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -338,78 +338,90 @@ const DataVisual = () => {
         }}
       />
 
-      {/* Left: Pipeline Code */}
+      {/* Left: Data Source / Table */}
       <div className="flex flex-col gap-2 relative z-10">
-        <div className="h-20 bg-[#252535] rounded border border-white/5 p-2 relative overflow-hidden shadow-lg">
-          <div className="text-[8px] text-gray-500 mb-1">
-            PIPELINE_CONFIG.YAML
+        <div className="bg-[#252535] rounded border border-white/5 p-2 h-full shadow-lg overflow-hidden relative group">
+          <div className="flex justify-between items-center mb-2 border-b border-white/5 pb-1">
+            <div className="text-[8px] text-gray-400 font-mono">
+              CLEAN_DATA_V2.CSV
+            </div>
+            <div className="text-[8px] text-design-green font-bold">
+              100% CLEAN
+            </div>
           </div>
-          <div className="space-y-1">
-            <div className="h-1 w-3/4 bg-purple-500/30 rounded"></div>
-            <div className="h-1 w-1/2 bg-purple-500/30 rounded"></div>
-            <div className="h-1 w-2/3 bg-blue-500/30 rounded"></div>
-          </div>
-        </div>
-        <div className="flex-1 bg-[#252535] rounded border border-white/5 p-2 flex items-center justify-center shadow-lg">
-          <div className="w-12 h-12 rounded-full border-4 border-t-purple-500 border-r-purple-500 border-b-transparent border-l-blue-500 animate-spin"></div>
+          {/* Fake Table Rows */}
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className="flex gap-1 mb-1 opacity-60">
+              <div className="w-1/4 h-1.5 bg-gray-600 rounded-sm"></div>
+              <div className="w-1/4 h-1.5 bg-gray-600 rounded-sm"></div>
+              <div className="w-1/2 h-1.5 bg-blue-500/50 rounded-sm"></div>
+            </div>
+          ))}
+          {/* Scan line effect */}
+          <motion.div
+            className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-design-blue/10 to-transparent pointer-events-none"
+            animate={{ top: ["-100%", "200%"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          />
         </div>
       </div>
 
-      {/* Right: Charts/Segments */}
+      {/* Right: Visualization Widgets */}
       <div className="flex flex-col gap-2 relative z-10">
-        {/* RFM Blocks */}
-        <div className="flex-1 bg-[#252535] rounded border border-white/5 p-2 flex flex-wrap content-start gap-1 shadow-lg">
-          <div className="w-full text-[8px] text-gray-400 mb-1">
-            RFM SEGMENTS
+        {/* Widget 1: Pie Chart (Segmentation) */}
+        <div className="flex-1 bg-[#252535] rounded border border-white/5 p-2 flex flex-col justify-center items-center shadow-lg relative">
+          <div className="absolute top-1 left-2 text-[8px] text-gray-400">
+            SEGMENTS
           </div>
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            className="w-6 h-6 bg-red-500/80 rounded-sm"
-          />
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.1 }}
-            className="w-10 h-6 bg-orange-500/80 rounded-sm"
-          />
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="w-4 h-6 bg-yellow-500/80 rounded-sm"
-          />
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="w-8 h-6 bg-green-500/80 rounded-sm"
-          />
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="w-5 h-6 bg-blue-500/80 rounded-sm"
-          />
+          <div className="w-12 h-12 rounded-full border-[3px] border-yellow-500 border-t-purple-500 border-r-blue-500 box-border rotate-45 transform"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[8px] font-bold text-white">
+            RFM
+          </div>
         </div>
 
-        {/* Stats Bar */}
-        <div className="h-10 bg-[#252535] rounded border border-white/5 flex items-center px-2 gap-2 shadow-lg">
-          <div className="flex-1 h-1 bg-gray-700 rounded-full overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "70%" }}
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
-            />
+        {/* Widget 2: Bar Chart (Trends) */}
+        <div className="flex-1 bg-[#252535] rounded border border-white/5 p-2 flex items-end justify-between gap-1 shadow-lg relative">
+          <div className="absolute top-1 left-2 text-[8px] text-gray-400">
+            GROWTH
           </div>
-          <div className="text-[8px] text-white">Processed</div>
+          <motion.div
+            className="w-full bg-blue-900 rounded-t-sm"
+            initial={{ height: 0 }}
+            whileInView={{ height: "40%" }}
+          />
+          <motion.div
+            className="w-full bg-blue-700 rounded-t-sm"
+            initial={{ height: 0 }}
+            whileInView={{ height: "60%" }}
+          />
+          <motion.div
+            className="w-full bg-blue-500 rounded-t-sm"
+            initial={{ height: 0 }}
+            whileInView={{ height: "30%" }}
+          />
+          <motion.div
+            className="w-full bg-design-green rounded-t-sm shadow-[0_0_10px_rgba(74,222,128,0.5)]"
+            initial={{ height: 0 }}
+            whileInView={{ height: "80%" }}
+          />
         </div>
       </div>
 
-      {/* Floating Tag */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-design-blue text-white text-[9px] font-bold px-2 py-1 rounded shadow-lg z-20">
-        ETL Ready
-      </div>
+      {/* Floating Tooltips */}
+      <motion.div
+        animate={{ y: [-5, 5, -5] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute top-[15%] right-[10%] bg-[#FFC107] text-black text-[8px] font-bold px-1.5 py-0.5 rounded shadow-xl z-20 transform rotate-12"
+      >
+        Power BI
+      </motion.div>
+      <motion.div
+        animate={{ y: [5, -5, 5] }}
+        transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+        className="absolute bottom-[20%] left-[15%] bg-[#4285F4] text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow-xl z-20 transform -rotate-6"
+      >
+        Looker
+      </motion.div>
     </div>
   );
 };
@@ -759,13 +771,19 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
           onViewCaseStudy={() => onViewChange && onViewChange("project-vibe")}
         />
 
-        {/* 3. Data Engineering */}
+        {/* 3. Data Engineering (UPDATED) */}
         <ProjectCard
           id="03"
           title="Data Intelligence & Analytics"
-          subtitle="Data Engineering & Analytics"
-          description="Building robust data pipelines and analytics dashboards. Focusing on Customer Segmentation (RFM Analysis), ETL processes, and visualizing actionable data insights."
-          tags={["SQL", "Python", "ETL Pipelines", "Data Viz", "RFM Analysis"]}
+          subtitle="BI & Customer Insights"
+          description="Transforming raw data into clear business insights. Specializing in Data Cleaning, Customer Segmentation, and interactive dashboards using Power BI and Looker Studio."
+          tags={[
+            "Power BI",
+            "Looker",
+            "Segmentation",
+            "Data Cleaning",
+            "Python (Pandas)",
+          ]}
           color="bg-design-blue"
           VisualComponent={DataVisual}
           align="left"
