@@ -8,6 +8,7 @@ import TabOverview from "./n8n/TabOverview";
 import TabSocialMedia from "./n8n/TabSocialMedia";
 import TabAIAgents from "./n8n/TabAIAgents";
 import TabOfficeOps from "./n8n/TabOfficeOps";
+import FloatingWidgets from "./n8n/FloatingWidgets";
 
 interface Props {
   onBack: () => void;
@@ -81,6 +82,9 @@ const ProjectDetailN8n: React.FC<Props> = ({ onBack }) => {
       transition={{ duration: 0.5, ease: "circOut" }}
       className="relative z-50 min-h-screen pb-20 overflow-hidden"
     >
+      {/* --- FLOATING DECORATIVE WIDGETS --- */}
+      <FloatingWidgets activeTab={activeTab} />
+
       {/* --- HEADER NAVIGATION --- */}
       <div className="fixed top-24 left-0 right-0 z-40 px-6 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-start pointer-events-auto">
