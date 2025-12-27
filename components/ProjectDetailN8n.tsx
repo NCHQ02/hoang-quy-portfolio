@@ -155,18 +155,8 @@ const ProjectDetailN8n: React.FC<Props> = ({ onBack }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 100 }}
       transition={{ duration: 0.5, ease: "circOut" }}
-      className="relative z-50 bg-[#0a0a0a] min-h-screen pb-20 overflow-hidden"
+      className="relative z-50 min-h-screen pb-20 overflow-hidden"
     >
-      {/* Global Grid for Canvas Feel */}
-      <div
-        className="fixed inset-0 z-0 opacity-[0.05] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-
       {/* --- HEADER NAVIGATION --- */}
       <div className="fixed top-24 left-0 right-0 z-40 px-6 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-start pointer-events-auto">
@@ -316,7 +306,7 @@ const ProjectDetailN8n: React.FC<Props> = ({ onBack }) => {
       </section>
 
       {/* --- SOLUTION SECTION (The n8n Architect) --- */}
-      <section className="py-20 px-6 relative bg-[#151515]">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <SectionNumber num="02" />
           <div className="text-center mb-16">
@@ -401,7 +391,7 @@ const ProjectDetailN8n: React.FC<Props> = ({ onBack }) => {
       </section>
 
       {/* --- FOOTER CTA --- */}
-      <section className="py-20 px-6 relative border-t border-white/5 bg-[#050505]">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8">
             READY TO SCALE?

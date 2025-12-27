@@ -72,18 +72,8 @@ const ProjectDetailVibe: React.FC<Props> = ({ onBack }) => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}
       transition={{ duration: 0.5, ease: "circOut" }}
-      className="relative z-50 bg-[#0a0a0a] min-h-screen pb-20 overflow-hidden font-mono"
+      className="relative z-50 min-h-screen pb-20 overflow-hidden font-mono text-slate-200"
     >
-      {/* Global Grid for Engineering/Graph Paper Feel */}
-      <div
-        className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(#4ade80 1px, transparent 1px), linear-gradient(90deg, #4ade80 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      />
-
       {/* --- HEADER NAVIGATION (IDE TABS STYLE) --- */}
       <div className="fixed top-24 left-0 right-0 z-40 px-6 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-start pointer-events-auto">
@@ -202,7 +192,7 @@ const ProjectDetailVibe: React.FC<Props> = ({ onBack }) => {
       </section>
 
       {/* --- PROBLEM SECTION (The "Manual" Debugging) --- */}
-      <section className="py-20 px-6 relative border-t border-white/5 bg-[#0d0d0d]">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <SectionNumber num="01" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -386,7 +376,7 @@ const ProjectDetailVibe: React.FC<Props> = ({ onBack }) => {
       </section>
 
       {/* --- METRICS / BENCHMARK --- */}
-      <section className="py-24 px-6 relative bg-[#050505] border-t border-white/5">
+      <section className="py-24 px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <SectionNumber num="03" />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 text-center">
