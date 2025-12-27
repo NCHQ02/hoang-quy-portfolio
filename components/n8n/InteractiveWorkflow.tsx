@@ -66,10 +66,10 @@ const WorkflowNodeComponent: React.FC<{
         strokeWidth={isActive ? 3 : 2}
         animate={{
           scale: isHovered ? 1.05 : 1,
-          y: isHovered ? node.y - 3 : node.y,
+          y: isHovered ? -3 : 0,
         }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
-        style={{ transformOrigin: `${node.x + 50}px ${node.y + 35}px` }}
+        style={{ transformOrigin: "center", transformBox: "fill-box" }}
       />
 
       {/* Icon */}
