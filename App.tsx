@@ -4,22 +4,22 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Hero from "./components/Hero";
+import Hero from "./components/hero-section";
 import TableOfContents from "./components/TableOfContents";
-import About from "./components/About";
+import About from "./components/about-section";
 import Dock from "./components/Dock";
 import Footer from "./components/Footer";
 import BrowserHeader from "./components/BrowserHeader";
-import Projects from "./components/Projects";
-import SkillsServices from "./components/SkillsServices";
+import Projects from "./components/projects-section";
+import SkillsServices from "./components/skills-section";
 import Testimonials from "./components/Testimonials";
-import Resume from "./components/Resume";
-import Contact from "./components/Contact";
-import FlowConnector from "./components/FlowConnector";
+import Resume from "./components/resume-section";
+import Contact from "./components/contact-section";
+import FlowConnector from "./components/flow-connector";
 import { CursorProvider, useCursor } from "./components/GlobalCursor";
-import ProjectDetailN8n from "./components/ProjectDetailN8n";
-import ProjectDetailVibe from "./components/ProjectDetailVibe";
-import ProjectDetailData from "./components/ProjectDetailData";
+import ProjectDetailN8n from "./components/project-detail-n8n";
+import ProjectDetailVibe from "./components/project-detail-vibe";
+import ProjectDetailData from "./components/project-detail-data";
 
 // Types for View Navigation
 export type ViewState =
