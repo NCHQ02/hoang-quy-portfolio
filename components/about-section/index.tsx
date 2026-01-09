@@ -7,6 +7,7 @@ import { UIPanel } from "./components/UIPanel";
 import { SkillBar } from "./components/SkillBar";
 import { ToolIcon } from "./components/ToolIcon";
 import { SelectionHandle } from "./components/Shared";
+import { DESIGN_TOOLS } from "./config/tools.config";
 
 const About: React.FC = () => {
   const { setLabel } = useCursor();
@@ -341,34 +342,32 @@ const About: React.FC = () => {
             className="lg:col-span-4 flex flex-col items-center justify-center bg-[#181818]"
             delay={0.4}
           >
-            <h3 className="text-2xl font-display font-bold text-design-pink mb-8 w-full text-center">
+            <h3 className="text-2xl font-display font-bold text-design-pink mb-8 w-full text-left">
               TOOLS
             </h3>
 
-            {/* Figma Bubble */}
+            {/* Featured Tool (Top 1) */}
             <div className="relative mb-8">
               <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-design-pink text-white text-xs px-3 py-1 rounded-full animate-bounce">
-                My best buddy, Figma!
+                My best buddy!
                 <div className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-2 h-2 bg-design-pink rotate-45" />
               </div>
-              {/* Figma Icon with selection box */}
+              {/* Featured Icon with selection box */}
               <div className="relative p-2 border border-design-pink/50 rounded-xl">
                 <SelectionHandle className="-top-1 -left-1 bg-design-pink border-none w-2 h-2" />
                 <SelectionHandle className="-top-1 -right-1 bg-design-pink border-none w-2 h-2" />
                 <SelectionHandle className="-bottom-1 -left-1 bg-design-pink border-none w-2 h-2" />
                 <SelectionHandle className="-bottom-1 -right-1 bg-design-pink border-none w-2 h-2" />
-                <ToolIcon name="Fi" bg="#1e1e1e" txt="#0ACF83" />
+                <ToolIcon {...DESIGN_TOOLS[0]} />
               </div>
             </div>
 
-            {/* Other Tools Grid */}
-            <div className="grid grid-cols-3 gap-4">
-              <ToolIcon name="Ai" bg="#330000" txt="#FF9A00" />
-              <ToolIcon name="Ps" bg="#001E36" txt="#31A8FF" />
-              <ToolIcon name="Ae" bg="#00005B" txt="#D291FF" />
-              <ToolIcon name="Xd" bg="#2C001E" txt="#FF2BC2" />
-              <ToolIcon name="Id" bg="#2C001E" txt="#FF3366" />
-              <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-gray-800 text-gray-500 text-2xl font-bold">
+            {/* Other Tools Grid (4 per row) */}
+            <div className="grid grid-cols-4 gap-3 w-full">
+              {DESIGN_TOOLS.slice(1).map((tool) => (
+                <ToolIcon key={tool.name} {...tool} />
+              ))}
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-gray-800 text-gray-500 text-2xl font-bold hover:bg-gray-700 transition-colors cursor-pointer">
                 +
               </div>
             </div>
