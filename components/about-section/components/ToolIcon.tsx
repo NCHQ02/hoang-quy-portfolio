@@ -27,7 +27,7 @@ export const ToolIcon: React.FC<ToolIconProps> = ({
   showLabel = true,
 }) => {
   return (
-    <div className="flex flex-col items-center gap-2 group">
+    <div className="flex flex-col items-center gap-2 group/tool">
       {/* Icon Container */}
       <motion.div
         whileHover={{ scale: 1.1, rotate: -5 }}
@@ -46,17 +46,27 @@ export const ToolIcon: React.FC<ToolIconProps> = ({
           <span>{label || name.substring(0, 2)}</span>
         )}
 
-        {/* Hover Tooltip (full name) */}
-        <span className="absolute -top-8 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] bg-black text-white px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
+        {/* Hover Tooltip on Icon (full name) */}
+        <span className="absolute -top-8 opacity-0 group-hover/tool:opacity-100 transition-opacity text-[10px] bg-black text-white px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
           {name}
         </span>
       </motion.div>
 
-      {/* Label below icon */}
+      {/* Label below icon with tooltip */}
       {showLabel && (
-        <span className="text-[10px] text-gray-400 text-center leading-tight max-w-[64px] truncate">
-          {label || name}
-        </span>
+        <div className="relative flex items-center justify-center w-full">
+          <span
+            className="text-[10px] text-gray-400 text-center leading-tight max-w-[64px] truncate cursor-default"
+            title={label || name} // Native HTML tooltip
+          >
+            {label || name}
+          </span>
+
+          {/* Enhanced Tooltip on Label Hover */}
+          <span className="absolute -bottom-8 opacity-0 group-hover/tool:opacity-100 transition-opacity text-[10px] bg-black text-white px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
+            {label || name}
+          </span>
+        </div>
       )}
     </div>
   );

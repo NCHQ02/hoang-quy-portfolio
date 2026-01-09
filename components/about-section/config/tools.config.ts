@@ -50,13 +50,13 @@ export const DESIGN_TOOLS: Tool[] = [
   {
     name: "Google Tag Manager",
     icon: "https://img.icons8.com/plasticine/100/google-tag-manager.png",
-    label: "Google Platform",
+    label: "Google Tag Manager",
   },
 
   {
-    name: "Google Looker Studio",
+    name: "Looker Studio",
     icon: "https://img.icons8.com/color/96/google-looker.png",
-    label: "Google Looker Studio",
+    label: "Looker Studio",
   },
   {
     name: "Power BI",
@@ -64,25 +64,25 @@ export const DESIGN_TOOLS: Tool[] = [
     label: "Power BI",
   },
   {
-    name: "Python Programming",
+    name: "Python",
     icon: "https://img.icons8.com/color/96/python--v1.png",
-    label: "Python Programming",
+    label: "Python",
   },
   {
-    name: "SQL Query",
+    name: "SQL",
     icon: "https://img.icons8.com/external-soft-fill-juicy-fish/60/external-sql-coding-and-development-soft-fill-soft-fill-juicy-fish.png",
-    label: "SQL Query",
+    label: "SQL",
   },
   {
-    name: "Google Firebase",
+    name: "Firebase",
     icon: "https://img.icons8.com/color/96/google-firebase-console.png",
-    label: "Google Firebase",
+    label: "Firebase",
   },
 
   {
-    name: "n8n Automaion",
+    name: "n8n",
     icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8b13FupbJiqRDcYQbK4BfEcAJ6S7eA8I5oQ&s",
-    label: "n8n Automaion",
+    label: "n8n",
   },
   {
     name: "HTML",
