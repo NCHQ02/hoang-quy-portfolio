@@ -19,13 +19,19 @@ import FlowConnector from "./components/flow-connector";
 import ProjectDetailN8n from "./components/project-detail-n8n";
 import ProjectDetailVibe from "./components/project-detail-vibe";
 import ProjectDetailData from "./components/project-detail-data";
+import ProjectDetailAnalytics from "./components/project-detail-analytics";
+import ProjectDetailCrm from "./components/project-detail-crm";
+import ProjectDetailAem from "./components/project-detail-aem";
 
 // Types for View Navigation
 export type ViewState =
   | "home"
   | "project-n8n"
   | "project-vibe"
-  | "project-data";
+  | "project-data"
+  | "project-analytics"
+  | "project-crm"
+  | "project-aem";
 
 const MainContent: React.FC<{
   onViewChange: (view: ViewState) => void;
@@ -89,6 +95,9 @@ const App: React.FC = () => {
     if (path === "/projects/n8n") return "project-n8n";
     if (path === "/projects/vibe") return "project-vibe";
     if (path === "/projects/data") return "project-data";
+    if (path === "/projects/analytics") return "project-analytics";
+    if (path === "/projects/crm") return "project-crm";
+    if (path === "/projects/aem") return "project-aem";
     return "home";
   };
 
@@ -97,6 +106,9 @@ const App: React.FC = () => {
     if (view === "project-n8n") return "/projects/n8n";
     if (view === "project-vibe") return "/projects/vibe";
     if (view === "project-data") return "/projects/data";
+    if (view === "project-analytics") return "/projects/analytics";
+    if (view === "project-crm") return "/projects/crm";
+    if (view === "project-aem") return "/projects/aem";
     return "/";
   };
 
@@ -144,6 +156,10 @@ const App: React.FC = () => {
       if (previousView.current === "project-n8n") return "project-n8n-card";
       if (previousView.current === "project-vibe") return "project-vibe-card";
       if (previousView.current === "project-data") return "project-data-card";
+      if (previousView.current === "project-analytics")
+        return "project-analytics-card";
+      if (previousView.current === "project-crm") return "project-crm-card";
+      if (previousView.current === "project-aem") return "project-aem-card";
     }
     return null;
   };
@@ -177,6 +193,12 @@ const App: React.FC = () => {
             <ProjectDetailVibe key="vibe" onBack={handleBack} />
           ) : currentView === "project-data" ? (
             <ProjectDetailData key="data" onBack={handleBack} />
+          ) : currentView === "project-analytics" ? (
+            <ProjectDetailAnalytics key="analytics" onBack={handleBack} />
+          ) : currentView === "project-crm" ? (
+            <ProjectDetailCrm key="crm" onBack={handleBack} />
+          ) : currentView === "project-aem" ? (
+            <ProjectDetailAem key="aem" onBack={handleBack} />
           ) : null}
         </AnimatePresence>
 

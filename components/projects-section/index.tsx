@@ -10,6 +10,9 @@ import ProjectCard from "./components/ProjectCard";
 import N8nVisual from "./visuals/N8nVisual";
 import VibeCodingVisual from "./visuals/VibeCodingVisual";
 import DataVisual from "./visuals/DataVisual";
+import AnalyticsVisual from "./visuals/AnalyticsVisual";
+import CrmVisual from "./visuals/CrmVisual";
+import AemVisual from "./visuals/AemVisual";
 
 interface ProjectsProps {
   onViewChange?: (view: ViewState) => void;
@@ -214,7 +217,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
         <ProjectCard
           id="03"
           sectionId="project-data-card"
-          title="Data Intelligence & Analytics"
+          title="Segmentation & Analytics"
           subtitle="BI & Customer Insights"
           description="Transforming raw data into clear business insights. Specializing in Data Cleaning, Customer Segmentation, and interactive dashboards using Power BI and Looker Studio."
           tags={[
@@ -229,6 +232,59 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
           align="left"
           isComingSoon={false}
           onViewCaseStudy={() => onViewChange && onViewChange("project-data")}
+        />
+
+        {/* 4. Analytics & Tracking (NEW) */}
+        <ProjectCard
+          id="04"
+          sectionId="project-analytics-card"
+          title="Digital Analytics Ecosystem"
+          subtitle="GTM & Signal Recovery"
+          description="Architecting the 'nervous system' of marketing data. Server-side GTM, Data Layer governance, and advanced Looker Studio dashboards."
+          tags={["GTM", "GA4", "Server-side", "BigQuery", "Looker Studio"]}
+          color="bg-blue-600"
+          VisualComponent={AnalyticsVisual}
+          align="right"
+          isComingSoon={false}
+          onViewCaseStudy={() =>
+            onViewChange && onViewChange("project-analytics")
+          }
+        />
+
+        {/* 5. CRM Execution (NEW) */}
+        <ProjectCard
+          id="05"
+          sectionId="project-crm-card"
+          title="CRM Multi-Channel Delivery"
+          subtitle="Lifecycle Automation"
+          description="Orchestrating complex customer journeys across Email, Zalo Broadcast, Zalo ZNS and App Push. Delivering the right message at the right moment."
+          tags={[
+            "Zalo ZNS",
+            "Email Automation",
+            "Push Notif",
+            "CDP",
+            "Journeys",
+          ]}
+          color="bg-orange-500"
+          VisualComponent={CrmVisual}
+          align="left"
+          isComingSoon={false}
+          onViewCaseStudy={() => onViewChange && onViewChange("project-crm")}
+        />
+
+        {/* 6. AEM Management (NEW) */}
+        <ProjectCard
+          id="06"
+          sectionId="project-aem-card"
+          title="Enterprise CMS Management"
+          subtitle="Abbott Global Tech Stack"
+          description="Managing large-scale digital assets on Adobe Experience Manager (AEM). Focusing on component stability, multi-market rollouts, and uptime."
+          tags={["Adobe AEM", "Enterprise CMS", "Java", "HTL", "Frontend Ops"]}
+          color="bg-red-600"
+          VisualComponent={AemVisual}
+          align="right"
+          isComingSoon={false}
+          onViewCaseStudy={() => onViewChange && onViewChange("project-aem")}
         />
       </div>
     </section>

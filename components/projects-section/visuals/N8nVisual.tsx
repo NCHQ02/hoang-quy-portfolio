@@ -39,7 +39,7 @@ const N8nVisual = () => {
             AI AGENT
           </div>
           <div className="text-[8px] bg-design-purple text-white px-1 rounded">
-            GPT-4
+            GEMINI
           </div>
         </div>
         <div className="h-1 w-full bg-gray-700 rounded mb-1"></div>
