@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       {/* Visual Side (Span 7) */}
       <div
-        className={`lg:col-span-7 h-[300px] md:h-[400px] relative group cursor-none ${
+        className={`lg:col-span-7 h-[300px] md:h-[400px] relative group ${
           align === "right" ? "lg:order-2" : "lg:order-1"
         }`}
         onMouseEnter={() => setLabel("Open")}
@@ -129,7 +129,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           onMouseEnter={() => setLabel(isComingSoon ? "Soon" : "Click")}
           onMouseLeave={() => setLabel(null)}
           onClick={onViewCaseStudy}
-          className={`px-6 py-3 rounded-lg font-bold text-sm bg-white text-black hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-none ${
+          className={`px-6 py-3 rounded-lg font-bold text-sm bg-white text-black hover:bg-gray-200 transition-colors flex items-center gap-2 ${
             !isComingSoon ? "shadow-[0_0_20px_rgba(255,255,255,0.3)]" : ""
           }`}
         >

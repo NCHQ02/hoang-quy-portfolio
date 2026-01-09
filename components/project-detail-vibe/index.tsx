@@ -17,19 +17,7 @@ interface Props {
 }
 
 const ProjectDetailVibe: React.FC<Props> = ({ onBack }) => {
-  const { setLabel, setIsActive } = useCursor();
-
-  useEffect(() => {
-    // Enable custom cursor mode globally for this page
-    document.body.classList.add("no-cursor");
-    setIsActive(true);
-
-    return () => {
-      // Cleanup: revert to normal cursor
-      document.body.classList.remove("no-cursor");
-      setIsActive(false);
-    };
-  }, [setIsActive]);
+  const { setLabel } = useCursor();
 
   return (
     <motion.div

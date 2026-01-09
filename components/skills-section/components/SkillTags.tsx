@@ -39,7 +39,7 @@ export const SoftSkillTag = ({
   <div
     onMouseEnter={() => setCursorLabel("Check")}
     onMouseLeave={() => setCursorLabel(null)}
-    className="flex items-center gap-2 py-1 border-b border-white/5 last:border-0 group cursor-none"
+    className="flex items-center gap-2 py-1 border-b border-white/5 last:border-0 group"
   >
     <div className="w-4 h-4 rounded-full border border-gray-600 flex items-center justify-center group-hover:border-design-green transition-colors">
       <div className="w-1.5 h-1.5 bg-gray-600 rounded-full group-hover:bg-design-green transition-colors" />

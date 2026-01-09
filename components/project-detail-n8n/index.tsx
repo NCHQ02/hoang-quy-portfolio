@@ -22,21 +22,9 @@ import {
 
 // --- MAIN COMPONENT ---
 const ProjectDetailN8n: React.FC<ProjectDetailProps> = ({ onBack }) => {
-  const { setLabel, setIsActive } = useCursor();
+  const { setLabel } = useCursor();
   const [activeTab, setActiveTab] = useState(0);
   const tabContentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Enable custom cursor mode globally for this page
-    document.body.classList.add("no-cursor");
-    setIsActive(true);
-
-    return () => {
-      // Cleanup: revert to normal cursor
-      document.body.classList.remove("no-cursor");
-      setIsActive(false);
-    };
-  }, [setIsActive]);
 
   // Scroll to tab content area when tab changes
   const scrollToTabContent = () => {

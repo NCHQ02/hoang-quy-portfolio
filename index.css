@@ -18,6 +18,32 @@
   }
 }
 
+/* Ensure proper cursor for interactive elements */
+a,
+button,
+[role="button"],
+[onclick],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+label[for],
+summary {
+  cursor: pointer !important;
+}
+
+/* Restore text cursor for text inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+textarea {
+  cursor: text !important;
+}
+
 /* Custom scrollbar for webkit */
 ::-webkit-scrollbar {
   width: 8px;
@@ -31,13 +57,4 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
-}
-
-/* 
-   CRITICAL FIX: Force hide system cursor on EVERYTHING when this class is active.
-   This prevents the 'hand' pointer from showing up on buttons/links.
-*/
-.no-cursor,
-.no-cursor * {
-  cursor: none !important;
 }

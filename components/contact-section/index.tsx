@@ -208,7 +208,7 @@ const Contact: React.FC = () => {
                 />
               </div>
               <button
-                className="bg-design-blue hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded transition-colors shadow-lg shadow-blue-500/20 cursor-none"
+                className="bg-design-blue hover:bg-blue-500 text-white text-sm font-medium px-4 py-2 rounded transition-colors shadow-lg shadow-blue-500/20"
                 onMouseEnter={() => setLabel("Send")}
                 onMouseLeave={() => setLabel(null)}
                 onClick={() =>

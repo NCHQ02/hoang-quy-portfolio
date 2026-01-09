@@ -34,7 +34,7 @@ const FigJamCanvas = () => {
       onClick={addStamp}
       onMouseEnter={() => setLabel("Stamp!")}
       onMouseLeave={() => setLabel(null)}
-      className="relative w-full h-full min-h-[500px] bg-[#1a1a1a] rounded-2xl border border-white/10 overflow-hidden cursor-none select-none group"
+      className="relative w-full h-full min-h-[500px] bg-[#1a1a1a] rounded-2xl border border-white/10 overflow-hidden select-none group"
     >
       {/* Background Dots */}
       <div

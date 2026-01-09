@@ -12,17 +12,8 @@ interface Props {
 }
 
 const ProjectDetailData: React.FC<Props> = ({ onBack }) => {
-  const { setLabel, setIsActive } = useCursor();
+  const { setLabel } = useCursor();
   const { scrollYProgress } = useScroll();
-
-  useEffect(() => {
-    document.body.classList.add("no-cursor");
-    setIsActive(true);
-    return () => {
-      document.body.classList.remove("no-cursor");
-      setIsActive(false);
-    };
-  }, [setIsActive]);
 
   return (
     <motion.div

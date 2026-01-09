@@ -45,7 +45,7 @@ export const SpotlightCard = ({
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ delay, duration: 0.4 }}
-      className="relative bg-[#2C2C2E] border border-white/5 rounded-xl p-5 overflow-hidden group h-full cursor-none"
+      className="relative bg-[#2C2C2E] border border-white/5 rounded-xl p-5 overflow-hidden group h-full"
     >
       {/* Spotlight Effect */}
       <div

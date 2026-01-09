@@ -89,7 +89,7 @@ const SkillsServices: React.FC = () => {
 
         {/* --- MAIN WINDOW CONTAINER --- */}
         <div
-          className="border border-white/10 bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden flex flex-col lg:flex-row h-auto lg:min-h-[700px] cursor-none relative z-20"
+          className="border border-white/10 bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden flex flex-col lg:flex-row h-auto lg:min-h-[700px] relative z-20"
           onMouseEnter={() => setLabel("View")}
           onMouseLeave={() => setLabel(null)}
         >

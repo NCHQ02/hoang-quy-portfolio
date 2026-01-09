@@ -43,7 +43,7 @@ export const MagneticTag: React.FC<MagneticTagProps> = ({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      className={`px-3 py-1.5 bg-[#1C1C1E] border border-white/5 rounded text-[11px] text-gray-400 hover:text-white hover:border-white/40 transition-colors inline-block ${color} cursor-none`}
+      className={`px-3 py-1.5 bg-[#1C1C1E] border border-white/5 rounded text-[11px] text-gray-400 hover:text-white hover:border-white/40 transition-colors inline-block ${color}`}
     >
       {text}
     </motion.span>

@@ -94,7 +94,7 @@ const Projects: React.FC<ProjectsProps> = ({ onViewChange }) => {
 
               {/* 3. "PROJECTS" - Massive, Interacting Letters */}
               <div
-                className="relative text-[15vw] md:text-[10rem] lg:text-[12rem] font-black leading-[0.8] tracking-tighter text-white flex justify-center cursor-none group"
+                className="relative text-[15vw] md:text-[10rem] lg:text-[12rem] font-black leading-[0.8] tracking-tighter text-white flex justify-center group"
                 onMouseEnter={() => setLabel("Highlight")}
                 onMouseLeave={() => setLabel(null)}
               >
