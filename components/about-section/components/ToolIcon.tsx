@@ -10,14 +10,6 @@ interface ToolIconProps {
   showLabel?: boolean; // Show label below icon (default: true)
 }
 
-/**
- * ToolIcon Component
- * Supports both text-based icons and external image URLs
- *
- * Usage:
- * - Text icon: <ToolIcon name="Adobe Illustrator" label="Ai" bg="#330000" txt="#FF9A00" />
- * - Image icon: <ToolIcon name="Figma" icon="https://img.icons8.com/color/96/figma.png" />
- */
 export const ToolIcon: React.FC<ToolIconProps> = ({
   name,
   bg = "#2C2C2E",
@@ -56,14 +48,14 @@ export const ToolIcon: React.FC<ToolIconProps> = ({
       {showLabel && (
         <div className="relative flex items-center justify-center w-full">
           <span
-            className="text-[10px] text-gray-400 text-center leading-tight max-w-[64px] truncate cursor-default"
-            title={label || name} // Native HTML tooltip
+            className="text-[10px] text-gray-400 text-center leading-tight max-w-[64px] truncate cursor-default group-hover/tool:opacity-0 transition-opacity"
+            title={label || name} // Native HTML tooltip (fallback)
           >
             {label || name}
           </span>
 
-          {/* Enhanced Tooltip on Label Hover */}
-          <span className="absolute -bottom-8 opacity-0 group-hover/tool:opacity-100 transition-opacity text-[10px] bg-black text-white px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
+          {/* Enhanced Tooltip on Hover (closer to icon) */}
+          <span className="absolute -bottom-6 opacity-0 group-hover/tool:opacity-100 transition-opacity text-[10px] bg-black text-white px-2 py-1 rounded whitespace-nowrap z-20 pointer-events-none">
             {label || name}
           </span>
         </div>

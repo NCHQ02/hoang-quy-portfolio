@@ -45,7 +45,7 @@ export const DESIGN_TOOLS: Tool[] = [
   {
     name: "Google Analytics",
     icon: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-google-analytics-lets-you-measure-your-advertising-roi-logo-color-tal-revivo.png",
-    label: "Google Platform",
+    label: "Google Analytics",
   },
   {
     name: "Google Tag Manager",
