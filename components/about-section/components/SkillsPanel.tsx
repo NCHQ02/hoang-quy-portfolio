@@ -21,34 +21,97 @@ const SkillsPanel: React.FC = () => {
         SKILLS
       </h3>
 
-      <div className="flex flex-wrap gap-2 mb-8">
-        {[
-          "CMS & CRM",
-          "Digital Platform",
-          "Vibe Coding",
-          "Marketing Automation",
-          "Data & Analytics",
-          "AI & Automation",
-          "Problem Solving",
-          "Self Learning",
-        ].map((skill) => (
-          <span
-            key={skill}
-            className="px-3 py-1.5 bg-[#2A2A2A] text-gray-300 text-xs font-medium rounded-lg border border-white/5 hover:border-design-orange hover:text-design-orange transition-colors cursor-default"
-          >
-            {skill}
-          </span>
-        ))}
+      {/* Technical Skills */}
+      <div className="mb-6">
+        <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold">
+          Technical & Tools
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          {[
+            "CMS & CRM",
+            "Marketing Automation",
+            "Data & Analytics",
+            "Vibe Coding",
+            "AI Integration",
+            "SQL / Python",
+          ].map((skill) => (
+            <span
+              key={skill}
+              className="px-3 py-1.5 bg-[#2A2A2A] text-gray-300 text-xs font-medium rounded-lg border border-white/5 hover:border-design-orange hover:text-design-orange transition-colors cursor-default"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Soft Skills */}
+      <div className="mb-8">
+        <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold">
+          Professional
+        </h4>
+        <div className="flex flex-wrap gap-2">
+          {[
+            "Problem Solving",
+            "Self Learning",
+            "Project Management",
+            "Team Collaboration",
+          ].map((skill) => (
+            <span
+              key={skill}
+              className="px-3 py-1.5 bg-[#2A2A2A] text-gray-400 text-xs font-medium rounded-lg border border-white/5 hover:border-white/20 hover:text-white transition-colors cursor-default"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
       </div>
 
       <h3 className="text-2xl font-display font-bold text-design-blue mb-6">
         LANGUAGES
       </h3>
-      <SkillBar label="Vietnamese" level="100%" color="#3b82f6" />
-      <SkillBar label="English" level="85%" color="#60a5fa" />
+      <div className="space-y-4 mb-6">
+        <div>
+          <div className="flex justify-between items-end mb-1">
+            <span className="text-white font-medium text-sm">Vietnamese</span>
+            <span className="text-xs text-gray-500">Native</span>
+          </div>
+          <SkillBar label="" level="100%" color="#3b82f6" hideLabel />
+        </div>
+        <div>
+          <div className="flex justify-between items-end mb-1">
+            <span className="text-white font-medium text-sm">English</span>
+            <span className="text-xs text-gray-500">Professional Working</span>
+          </div>
+          <SkillBar label="" level="85%" color="#60a5fa" hideLabel />
+        </div>
+      </div>
+
+      {/* Certifications Mockup */}
+      <div className="mb-4">
+        <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold">
+          Certifications
+        </h4>
+        <ul className="space-y-2 text-xs text-gray-400">
+          <li className="flex items-start gap-2">
+            <div className="mt-1 w-1.5 h-1.5 rounded-full bg-design-orange shrink-0" />
+            <span>Adobe Digital Experience Certificate Program (13 Cert+)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="mt-1 w-1.5 h-1.5 rounded-full bg-design-orange shrink-0" />
+            <span>
+              Unilever Digital Marketing Analyst Professional Certificate
+            </span>
+          </li>
+          <li className="flex items-start gap-2">
+            <div className="mt-1 w-1.5 h-1.5 rounded-full bg-design-orange shrink-0" />
+            <span>30+ Certificates from completed courses</span>
+          </li>
+        </ul>
+      </div>
 
       {/* Spacer to push button to bottom */}
-      <div className="flex-1 min-h-[2rem]" />
+      <div className="flex-1 min-h-[1rem]" />
 
       {/* Simple QR Code Placeholder / Resume Link */}
       <div
