@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    position: relative;
+  }
+
+  body {
+    position: relative;
+    background-color: #0a0a0a;
+    color: #ededed;
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* 
+   CRITICAL FIX: Force hide system cursor on EVERYTHING when this class is active.
+   This prevents the 'hand' pointer from showing up on buttons/links.
+*/
+.no-cursor,
+.no-cursor * {
+  cursor: none !important;
+}

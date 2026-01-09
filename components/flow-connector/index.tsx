@@ -13,7 +13,10 @@ import LayersCard from "./widgets/LayersCard";
 import PropertiesPanel from "./widgets/PropertiesPanel";
 import ButtonVariantsCard from "./widgets/ButtonVariantsCard";
 
-const FlowConnector: React.FC = () => {
+const FlowConnectorContent: React.FC<{
+  windowSize: [number, number];
+  isMobile: boolean;
+}> = ({ windowSize, isMobile }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -23,25 +26,8 @@ const FlowConnector: React.FC = () => {
   const pathLength = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
-  const [mounted, setMounted] = useState(false);
-  const [windowSize, setWindowSize] = useState([1000, 800]);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const updateSize = () => {
-      setWindowSize([window.innerWidth, window.innerHeight]);
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", updateSize);
-    updateSize(); // Initial check
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  if (!mounted) return null;
-
   const w = windowSize[0];
-  const h = window.innerHeight; // Use simpler height calc
+  const h = windowSize[1];
 
   // CLEANED UP INITIAL POSITIONS (Balanced Layout)
   const positions = [
@@ -70,6 +56,7 @@ const FlowConnector: React.FC = () => {
     <div
       ref={containerRef}
       className="relative w-full h-[100vh] overflow-visible pointer-events-none -mt-[15vh] z-30"
+      style={{ position: "relative" }}
     >
       {/* 1. Background Connection Lines */}
       <svg className="absolute inset-0 w-full h-full overflow-visible z-0 pointer-events-none opacity-30">
@@ -82,7 +69,7 @@ const FlowConnector: React.FC = () => {
           </linearGradient>
         </defs>
         <motion.path
-          d="M 50% 0% L 50% 100%"
+          d={`M ${w * 0.5} 0 L ${w * 0.5} ${h}`}
           fill="none"
           stroke="url(#mainLineGrad)"
           strokeWidth="1.5"
@@ -93,7 +80,9 @@ const FlowConnector: React.FC = () => {
         {!isMobile && (
           <>
             <motion.path
-              d="M 50% 20% C 20% 20%, 20% 40%, 20% 60%"
+              d={`M ${w * 0.5} ${h * 0.2} C ${w * 0.2} ${h * 0.2}, ${w * 0.2} ${
+                h * 0.4
+              }, ${w * 0.2} ${h * 0.6}`}
               fill="none"
               stroke="#ffffff"
               strokeOpacity="0.1"
@@ -101,7 +90,9 @@ const FlowConnector: React.FC = () => {
               style={{ pathLength, opacity }}
             />
             <motion.path
-              d="M 50% 30% C 80% 30%, 80% 50%, 80% 70%"
+              d={`M ${w * 0.5} ${h * 0.3} C ${w * 0.8} ${h * 0.3}, ${w * 0.8} ${
+                h * 0.5
+              }, ${w * 0.8} ${h * 0.7}`}
               fill="none"
               stroke="#ffffff"
               strokeOpacity="0.1"
@@ -247,6 +238,29 @@ const FlowConnector: React.FC = () => {
       </div>
     </div>
   );
+};
+
+const FlowConnector: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+  const [windowSize, setWindowSize] = useState<[number, number]>([1000, 800]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Only set mounted after strict mode double effect has passed if any,
+    // essentially just waiting for client side mount.
+    setMounted(true);
+    const updateSize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize(); // Initial check
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  if (!mounted) return null;
+
+  return <FlowConnectorContent windowSize={windowSize} isMobile={isMobile} />;
 };
 
 export default FlowConnector;

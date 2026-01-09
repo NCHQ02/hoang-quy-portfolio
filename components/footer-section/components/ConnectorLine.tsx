@@ -18,22 +18,28 @@ const ConnectorLine: React.FC<ConnectorLineProps> = ({
 }) => {
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-visible hidden md:block">
-      <svg className="w-full h-full overflow-visible">
+      <svg
+        className="w-full h-full overflow-visible"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
         <motion.path
-          d="M 50% 30% C 50% 50%, 50% 60%, 50% 80%"
+          d="M 50 30 C 50 50, 50 60, 50 80"
           fill="none"
           stroke={color}
-          strokeWidth="2"
-          strokeDasharray="6 6"
+          strokeWidth="0.5"
+          strokeDasharray="2 2"
+          vectorEffect="non-scaling-stroke"
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 0.4 }}
           transition={{ duration: 1.5, delay: 0.5 }}
         />
         <motion.circle
-          cx="50%"
-          cy="80%"
-          r="4"
+          cx="50"
+          cy="80"
+          r="1"
           fill={color}
+          vectorEffect="non-scaling-stroke"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           transition={{ delay: 2 }}
